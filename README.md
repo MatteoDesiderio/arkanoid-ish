@@ -15,8 +15,9 @@ For now, a level is made of the following scenes:
 - bricks 
 
 The level_content basically references all the other objects and manages the gameplay. <br>
-The bricks scene is originally empty, but is changed/designed in the editor manually in each level. <br>
+The bricks scene is originally empty, but is changed/designed in the editor manually in each level, because it is a TileMapLayer object. <br>
 
+NOTE: For now the source_id of the breakable brick is '2'. Subject to change if tiles change 
 
 ## To do:
 
