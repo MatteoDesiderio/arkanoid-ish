@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b2rocgknl7grq" path="res://textures/placeholders/blockRed_broken.png" id="1_308ye"]
 
-[sub_resource type="Shader" id="Shader_hbghi"]
+[sub_resource type="Shader" id="Shader_4f3jl"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.5.1.stable's CanvasItemMaterial.
 
 shader_type canvas_item;
@@ -15,5 +15,5 @@ void fragment (){
 }"
 
 [resource]
-shader = SubResource("Shader_hbghi")
+shader = SubResource("Shader_4f3jl")
 shader_parameter/my_texture = ExtResource("1_308ye")

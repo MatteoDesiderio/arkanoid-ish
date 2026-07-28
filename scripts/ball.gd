@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed : float = 300.0
 
-var initial_direction_range : float = 0.5 
+var initial_direction_range : float = 0 
 
 var direction : Vector2 = Vector2(randf_range(-1, 1) * initial_direction_range, -1).normalized()
 

@@ -29,9 +29,7 @@ func _on_platform_hit() -> void:
 
 
 func _on_walls_hit() -> void:
-	print('I hit a wall, platform disabled:', platform.get_collision_shape().disabled)
 	platform.get_collision_shape().disabled = false
-	print('----> ', platform.get_collision_shape().disabled)
 
 
 func _fill_damage_tracker():
@@ -48,7 +46,7 @@ func get_closest_cell_to_point(point : Vector2) -> Vector2i:
 	return cells[idx_closest] 
 
 
-func damage_and_break_brick(cell_position : Vector2i) -> void: 
+func damage_and_break_brick(cell_position : Vector2i) -> void:
 	var inflicted_damage : int = 1 # TODO will become an input variable
 
 	if not _is_breakable(cell_position):
@@ -59,6 +57,7 @@ func damage_and_break_brick(cell_position : Vector2i) -> void:
 	
 	var current_damage : int = _get_current_damage(cell_position)
 	var max_damage : int = _get_max_damage(cell_position)
+	print(current_damage, ' - ', max_damage)
 	if current_damage >= max_damage:
 		bricks.erase_cell(cell_position)
 		# early return to avoid alt_tile ID increase beyond max in _show_damage 
@@ -86,4 +85,6 @@ func _get_max_damage(cell_position : Vector2i) -> int:
 
 
 func _show_damage(cell_position : Vector2i, previous_damage : int) -> void:
-	bricks.set_cell(cell_position, 1, Vector2i.ZERO, previous_damage + 1)
+	# SOURCE ID (II argument) IS 2 FOR THE BREAKABLE BRICK !!!!
+	# SUBJECT TO CHANGE IF THE TILES CHANGE!
+	bricks.set_cell(cell_position, 2, Vector2i.ZERO, previous_damage + 1)
