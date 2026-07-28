@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://ck5dc8d36s6rp"]
+
+[ext_resource type="Texture2D" uid="uid://dkxh6kpeatr21" path="res://textures/placeholders/blockPink.png" id="1_wuing"]
+[ext_resource type="Texture2D" uid="uid://bd8ascrf3n8u2" path="res://textures/placeholders/blockRed_breakable.png" id="2_a4aoa"]
+[ext_resource type="Texture2D" uid="uid://0dmimh7dd8w1" path="res://textures/placeholders/block_unbreakable.png" id="3_ca8ln"]
+[ext_resource type="Script" uid="uid://ci5x1phlrd7h1" path="res://scenes/bricks.gd" id="4_a4aoa"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pip8f"]
+texture = ExtResource("1_wuing")
+texture_region_size = Vector2i(64, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -16, 32, -16, 32, 16, -32, 16)
+0:0/0/custom_data_1 = 1
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4f3jl"]
+texture = ExtResource("2_a4aoa")
+texture_region_size = Vector2i(64, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -16, 32, -16, 32, 16, -32, 16)
+0:0/0/custom_data_0 = true
+0:0/0/custom_data_1 = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f57ag"]
+texture = ExtResource("3_ca8ln")
+texture_region_size = Vector2i(64, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -16, 32, -16, 32, 16, -32, 16)
+
+[sub_resource type="TileSet" id="TileSet_jd8fp"]
+tile_size = Vector2i(64, 32)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+custom_data_layer_0/name = "is_breakable"
+custom_data_layer_0/type = 1
+custom_data_layer_1/name = "max_damage"
+custom_data_layer_1/type = 2
+sources/1 = SubResource("TileSetAtlasSource_pip8f")
+sources/2 = SubResource("TileSetAtlasSource_4f3jl")
+sources/3 = SubResource("TileSetAtlasSource_f57ag")
+
+[node name="Bricks" type="TileMapLayer"]
+tile_set = SubResource("TileSet_jd8fp")
+script = ExtResource("4_a4aoa")

@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bxk3lm57cro2x"]
+
+[ext_resource type="Texture2D" uid="uid://b2rocgknl7grq" path="res://textures/placeholders/blockRed_broken.png" id="1_308ye"]
+
+[sub_resource type="Shader" id="Shader_hbghi"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.5.1.stable's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+uniform sampler2D my_texture;
+
+void fragment (){
+	COLOR = texture(my_texture, UV);
+}"
+
+[resource]
+shader = SubResource("Shader_hbghi")
+shader_parameter/my_texture = ExtResource("1_308ye")

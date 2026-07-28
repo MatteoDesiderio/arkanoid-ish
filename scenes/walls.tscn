@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://cch12wwewkxxt"]
+
+[ext_resource type="Script" uid="uid://m82yuacon1qs" path="res://scenes/wall.gd" id="1_yax5h"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oelu8"]
+normal = Vector2(0, 1)
+
+[node name="Walls" type="Node2D"]
+
+[node name="Top" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_yax5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+shape = SubResource("WorldBoundaryShape2D_oelu8")
+
+[node name="Right" type="StaticBody2D" parent="."]
+position = Vector2(640, 500)
+rotation = 1.5707964
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_yax5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+shape = SubResource("WorldBoundaryShape2D_oelu8")
+
+[node name="Bottom" type="StaticBody2D" parent="."]
+position = Vector2(320, 1000)
+rotation = 3.1415927
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_yax5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+shape = SubResource("WorldBoundaryShape2D_oelu8")
+
+[node name="Left" type="StaticBody2D" parent="."]
+position = Vector2(0, 500)
+rotation = 4.712389
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_yax5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+shape = SubResource("WorldBoundaryShape2D_oelu8")
