@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx0adebcmky0t"]
+[gd_scene load_steps=6 format=4 uid="uid://dx0adebcmky0t"]
 
 [ext_resource type="Script" uid="uid://d1g2ssktqbtxl" path="res://scripts/level_content.gd" id="1_s5lsf"]
 [ext_resource type="PackedScene" uid="uid://ck5dc8d36s6rp" path="res://scenes/bricks.tscn" id="5_2yjts"]
@@ -22,4 +22,4 @@ position = Vector2(320, 960)
 
 [node name="Bricks" parent="." instance=ExtResource("5_2yjts")]
 unique_name_in_owner = true
-tile_map_data = PackedByteArray(0, 0, 5, 0, 23, 0, 2, 0, 0, 0, 0, 0, 0, 0, 5, 0, 19, 0, 2, 0, 0, 0, 0, 0, 0, 0, 5, 0, 22, 0, 2, 0, 0, 0, 0, 0, 0, 0, 5, 0, 21, 0, 2, 0, 0, 0, 0, 0, 0, 0, 5, 0, 20, 0, 2, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray("AAAFABcAAgAAAAAAAAAFABMAAgAAAAAAAAAFABYAAgAAAAAAAAAFABUAAgAAAAAAAAAFABQAAgAAAAAAAAAAABMAAgAAAAAAAAAAABQAAgAAAAAAAAABABUAAgAAAAAAAAACABUAAgAAAAAAAAACABQAAgAAAAAAAAADABQAAgAAAAAAAAAEABQAAgAAAAAAAAAEABUAAgAAAAAAAAAEABYAAgAAAAAAAAAEABcAAgAAAAAAAAAEABgAAgAAAAAAAAAGABYAAgAAAAAAAAAHABYAAgAAAAAAAAAHABcAAgAAAAAAAAAIABcAAgAAAAAAAAAIABgAAgAAAAAAAAAJABgAAgAAAAAAAAAJABcAAgAAAAAAAAA=")
