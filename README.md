@@ -20,8 +20,6 @@ The bricks scene is originally empty, but is changed/designed in the editor manu
 NOTE: For now the source_id of the breakable brick is '2'. Subject to change if tiles change 
 
 ## To do:
-
-- give nudge to ball based on distance from platform centre
 - basic main menu
 - go to next level when win
 - implement win conditions
