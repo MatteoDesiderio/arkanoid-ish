@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://bxk3lm57cro2x" path="res://materials/tile_damage.tres" id="2_4f3jl"]
 [ext_resource type="Texture2D" uid="uid://bd8ascrf3n8u2" path="res://textures/placeholders/blockRed_breakable.png" id="2_a4aoa"]
 [ext_resource type="Texture2D" uid="uid://0dmimh7dd8w1" path="res://textures/placeholders/block_unbreakable.png" id="3_ca8ln"]
-[ext_resource type="Script" uid="uid://ci5x1phlrd7h1" path="res://scenes/bricks.gd" id="4_a4aoa"]
+[ext_resource type="Script" uid="uid://ci5x1phlrd7h1" path="res://scripts/bricks.gd" id="4_a4aoa"]
 [ext_resource type="Texture2D" uid="uid://c6todfog8v7tq" path="res://textures/placeholders/blockRed_very_broken.png" id="5_4f3jl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pip8f"]
