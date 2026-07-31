@@ -25,7 +25,7 @@ NOTE: For now the source_id of the breakable brick is '2'. Subject to change if 
 - basic main menu
 - go to next level when win
 - implement win conditions
-- lose conditions
+- lose conditions (3 life points?)
 - powerup mechanism (figure out )
 <br>
 Other items on checklist will come later. 
