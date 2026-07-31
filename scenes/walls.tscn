@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cch12wwewkxxt"]
+[gd_scene load_steps=4 format=3 uid="uid://cch12wwewkxxt"]
 
-[ext_resource type="Script" uid="uid://m82yuacon1qs" path="res://scenes/wall.gd" id="1_yax5h"]
+[ext_resource type="Script" uid="uid://m82yuacon1qs" path="res://scripts/wall.gd" id="1_yax5h"]
+[ext_resource type="Script" uid="uid://bxnbdqptudlo" path="res://scripts/ground.gd" id="2_0lpna"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oelu8"]
 normal = Vector2(0, 1)
@@ -30,7 +31,7 @@ position = Vector2(320, 1000)
 rotation = 3.1415927
 collision_layer = 8
 collision_mask = 2
-script = ExtResource("1_yax5h")
+script = ExtResource("2_0lpna")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
 shape = SubResource("WorldBoundaryShape2D_oelu8")
