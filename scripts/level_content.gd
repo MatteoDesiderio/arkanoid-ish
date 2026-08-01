@@ -9,6 +9,8 @@ var life_points : int = 3
 @onready var platform: Platform = %Platform
 ## Bricks of the level
 @onready var bricks: TileMapLayer = %Bricks
+## UI
+@onready var game_ui: Control = %"Game UI"
 
 
 
@@ -19,6 +21,7 @@ func _ready() -> void:
 	ball.brick_hit.connect(_on_brick_hit)
 	ball.platform_hit.connect(_on_platform_hit)
 	ball.walls_hit.connect(_on_walls_hit)
+	ball.ground_hit.connect(_on_ground_hit)
 	_fill_damage_tracker()
 
 func _on_brick_hit(hit_point : Vector2):
@@ -37,7 +40,7 @@ func _on_walls_hit() -> void:
 
 
 func _on_ground_hit() -> void:
-	# take_health_damage(1)
+	damage_life_points()
 	platform.get_collision_shape().disabled = true
 
 func _fill_damage_tracker():
@@ -96,3 +99,10 @@ func _show_damage(cell_position : Vector2i, previous_damage : int) -> void:
 	# SOURCE ID (II argument) IS 2 FOR THE BREAKABLE BRICK !!!!
 	# SUBJECT TO CHANGE IF THE TILES CHANGE!
 	bricks.set_cell(cell_position, 2, Vector2i.ZERO, previous_damage + 1)
+
+
+func damage_life_points() -> void:
+	life_points -= 1
+	game_ui.decrease_life_points_by_one()
+	if life_points <= 0:
+		print('Game Over')
