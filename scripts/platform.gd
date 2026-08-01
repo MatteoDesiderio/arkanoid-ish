@@ -17,6 +17,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	position.x = get_global_mouse_position().x
-	
+	position.x = max(64, position.x)
+	position.x = min(position.x, get_viewport_rect().size.x - 64)
+
+
 func get_collision_shape() -> CollisionShape2D:
 	return $CollisionShape2D
