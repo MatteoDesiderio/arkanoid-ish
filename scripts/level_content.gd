@@ -32,6 +32,10 @@ func _on_walls_hit() -> void:
 	platform.get_collision_shape().disabled = false
 
 
+func _on_ground_hit() -> void:
+	# take_health_damage(1)
+	platform.get_collision_shape().disabled = true
+
 func _fill_damage_tracker():
 	for brick : Vector2i in bricks.get_used_cells():
 		# TODO check whether alt tile ID corresponds to an already damaged brick
