@@ -1,7 +1,7 @@
 extends Node2D
 
 ## Health
-
+var life_points : int = 3
 
 ## Bouncy ball
 @onready var ball: CharacterBody2D = %Ball
