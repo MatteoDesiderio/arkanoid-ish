@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dlha4akgcvehy" path="res://textures/placeholders/health_point.png" id="1_yubou"]
 
-[node name="GameUI" type="Control"]
+[node name="Game UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,11 +23,11 @@ grow_vertical = 2
 [node name="Top Bar" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.07
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+size_flags_stretch_ratio = 0.06
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="Columns" type="HBoxContainer" parent="VBoxContainer/Top Bar"]
 layout_mode = 2
@@ -35,6 +35,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.07
 
 [node name="Life Points" type="HBoxContainer" parent="VBoxContainer/Top Bar/Columns"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Point 1" type="TextureRect" parent="VBoxContainer/Top Bar/Columns/Life Points"]
@@ -65,7 +66,7 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.7
-border_width = 11.0
+border_width = 0.0
 
 [node name="Panel" type="Button" parent="VBoxContainer/Top Bar/Columns"]
 layout_mode = 2
@@ -74,4 +75,4 @@ size_flags_horizontal = 3
 [node name="Bottom Space" type="ReferenceRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-border_width = 11.0
+border_width = 0.0
