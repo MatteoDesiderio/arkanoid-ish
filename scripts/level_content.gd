@@ -1,11 +1,15 @@
 extends Node2D
 
+## Health
+
+
 ## Bouncy ball
 @onready var ball: CharacterBody2D = %Ball
 ## Player controlled, moving platform
 @onready var platform: Platform = %Platform
 ## Bricks of the level
 @onready var bricks: TileMapLayer = %Bricks
+
 
 
 ## Tracks the damage of each brick

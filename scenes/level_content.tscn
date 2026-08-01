@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://dx0adebcmky0t"]
+[gd_scene load_steps=7 format=4 uid="uid://dx0adebcmky0t"]
 
 [ext_resource type="Script" uid="uid://d1g2ssktqbtxl" path="res://scripts/level_content.gd" id="1_s5lsf"]
 [ext_resource type="PackedScene" uid="uid://ck5dc8d36s6rp" path="res://scenes/bricks.tscn" id="5_2yjts"]
+[ext_resource type="PackedScene" uid="uid://cjfhr5k8fv8s6" path="res://scenes/game_ui.tscn" id="6_qqmpb"]
 [ext_resource type="PackedScene" uid="uid://o25w85ghrjdg" path="res://scenes/ball.tscn" id="7_kae30"]
 [ext_resource type="PackedScene" uid="uid://cch12wwewkxxt" path="res://scenes/walls.tscn" id="8_m775n"]
 [ext_resource type="PackedScene" uid="uid://xmweid82pdgg" path="res://scenes/platform.tscn" id="9_cobrg"]
@@ -24,3 +25,10 @@ position = Vector2(320, 960)
 unique_name_in_owner = true
 position = Vector2(32, 64)
 tile_map_data = PackedByteArray("AAAAABIAAQAAAAAAAAABABIAAQAAAAAAAAACABIAAQAAAAAAAAADABIAAQAAAAAAAAAEABIAAQAAAAAAAAAFABIAAQAAAAAAAAAGABIAAQAAAAAAAAAHABIAAQAAAAAAAAAIABIAAQAAAAAAAAA=")
+
+[node name="GameUI" parent="." instance=ExtResource("6_qqmpb")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
