@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cbvgb78uak2o5"]
+
+[node name="Game Over Popup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = 399.0
+offset_right = -105.0
+offset_bottom = -399.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button Back To Menu" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 118.0
+offset_right = -238.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to Menu"
+
+[node name="Button Try Again" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 236.0
+offset_top = 117.0
+offset_right = -30.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Try Again"

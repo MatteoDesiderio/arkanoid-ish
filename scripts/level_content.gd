@@ -3,6 +3,8 @@ extends Node2D
 ## Health
 var life_points : int = 3
 
+
+
 ## Bouncy ball
 @onready var ball: CharacterBody2D = %Ball
 ## Player controlled, moving platform
@@ -104,5 +106,6 @@ func _show_damage(cell_position : Vector2i, previous_damage : int) -> void:
 func damage_life_points() -> void:
 	life_points -= 1
 	game_ui.decrease_life_points_by_one()
+	
 	if life_points <= 0:
 		print('Game Over')
