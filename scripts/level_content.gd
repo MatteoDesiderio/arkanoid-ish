@@ -1,10 +1,6 @@
 extends Node2D
 
-## Health
-var life_points : int = 3
-
-
-
+#region Objects
 ## Bouncy ball
 @onready var ball: CharacterBody2D = %Ball
 ## Player controlled, moving platform
@@ -13,21 +9,29 @@ var life_points : int = 3
 @onready var bricks: TileMapLayer = %Bricks
 ## UI
 @onready var ui: CanvasLayer = %"UI"
+#endregion
 
 
-
+#region Game status
+## Health. Game over when reaches 0
+var life_points : int = 3
 ## Tracks the damage of each brick
 var damage_tracker : Dictionary[Vector2i, int] = {}
+## Tracks how many destructible bricks are left
+var brick_count : int = 0
+#endregion
+
 
 func _ready() -> void:
 	ball.brick_hit.connect(_on_brick_hit)
 	ball.platform_hit.connect(_on_platform_hit)
 	ball.walls_hit.connect(_on_walls_hit)
 	ball.ground_hit.connect(_on_ground_hit)
-	_fill_damage_tracker()
+	_initialize_game_status()
 
 
-func _process(delta: float) -> void:
+
+func _process(_delta: float) -> void:
 	if ball.is_active == false:
 		ball.position.x = platform.position.x
 
@@ -56,12 +60,19 @@ func _on_walls_hit() -> void:
 
 func _on_ground_hit() -> void:
 	damage_life_points()
+	# don't bounce between ground & platform, and lose 3 life points very fast
 	platform.get_collision_shape().disabled = true
 
-func _fill_damage_tracker():
+
+func _initialize_game_status() -> void:
 	for brick : Vector2i in bricks.get_used_cells():
 		# TODO check whether alt tile ID corresponds to an already damaged brick
+		# initialize the damage for each brick
 		damage_tracker[brick] = 0
+		# initialize number of bricks to break in order to win the level
+		if _is_breakable(brick):
+			brick_count += 1
+
 
 func get_closest_cell_to_point(point : Vector2) -> Vector2i:
 	var cells : = bricks.get_used_cells()
@@ -83,12 +94,13 @@ func damage_and_break_brick(cell_position : Vector2i) -> void:
 	
 	var current_damage : int = _get_current_damage(cell_position)
 	var max_damage : int = _get_max_damage(cell_position)
-	print(current_damage, ' - ', max_damage)
+
 	if current_damage >= max_damage:
 		bricks.erase_cell(cell_position)
-		# early return to avoid alt_tile ID increase beyond max in _show_damage 
+		brick_count -= 1
+		# early return to avoid alt_tile ID increase beyond max in _show_damage
 		return 
-	
+
 	_show_damage(cell_position, previous_damage)
 
 
