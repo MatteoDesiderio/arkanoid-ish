@@ -21,9 +21,15 @@ NOTE: For now the source_id of the breakable brick is '2'. Subject to change if 
 
 ## To do:
 - basic main menu
-- go to next level when win
 - implement win conditions
-- lose conditions (3 life points?)
-- powerup mechanism (figure out )
+- powerup mechanism (figure out)
+- level score (that resets when losing)
+- add random direction when ball stuck for too long (it happens)
+
+### Winning the level
+- each brick has custom property 'points'
+- count bricks: when all bricks destroyed, win game 
+- go to next level when win
+
 <br>
 Other items on checklist will come later. 
