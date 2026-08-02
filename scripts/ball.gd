@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 @export var speed : float = 300.0
 
-var initial_direction_range : float = 0 
+var initial_direction_range : float = 0
 
-var direction : Vector2 = Vector2(randf_range(-1, 1) * initial_direction_range, -1).normalized()
+var direction : Vector2 = Vector2(randf_range(-1, +1) * initial_direction_range, 1).normalized()
 
 signal brick_hit(collision_point : Vector2)
 signal platform_hit
@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 			'brick_hit', 
 			collision.get_position()
 			)
-		return
+		# return
 
 
 	if collider_from_collision is Wall:
@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 				'ground_hit'
 				)
 
-		return
+		# return
 
 
 	if collider_from_collision is Platform:
@@ -53,8 +53,9 @@ func _physics_process(delta: float) -> void:
 		emit_signal(
 			'platform_hit'
 			)
-		return
-
+		# return
+		
+	prevent_horizontal_bounce()
 
 func get_bounce_direction_platform(platform : Platform, collision_position : Vector2):
 	## Return a vector direction with angle 0 to +/- 45 degrees (with respect to
@@ -66,4 +67,8 @@ func get_bounce_direction_platform(platform : Platform, collision_position : Vec
 	var distance : Vector2 = collision_position - platform.position 
 	
 	return Vector2(distance.x / half_width, -1).normalized()
-	
+
+
+func prevent_horizontal_bounce() -> void:
+	if abs(direction.y) < 0.05:
+		direction.y = 0.1 * ([-1, 1].pick_random()) 
