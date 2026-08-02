@@ -21,12 +21,15 @@ var damage_tracker : Dictionary[Vector2i, int] = {}
 var brick_count : int = 0
 #endregion
 
+## Emitted when all bricks have been destroyed
+signal no_bricks_left 
 
 func _ready() -> void:
 	ball.brick_hit.connect(_on_brick_hit)
 	ball.platform_hit.connect(_on_platform_hit)
 	ball.walls_hit.connect(_on_walls_hit)
 	ball.ground_hit.connect(_on_ground_hit)
+	no_bricks_left.connect(_win_level)
 	_initialize_game_status()
 
 
