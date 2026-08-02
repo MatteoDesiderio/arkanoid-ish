@@ -1,5 +1,8 @@
 extends Node2D
 
+@export_file_path var next_level : String
+
+
 #region Objects
 ## Bouncy ball
 @onready var ball: CharacterBody2D = %Ball
@@ -8,6 +11,7 @@ extends Node2D
 ## Bricks of the level
 @onready var bricks: TileMapLayer = %Bricks
 #endregion
+
 
 #region UI
 ## UI: health, score & menu button; game over popup; game won popup
@@ -155,5 +159,9 @@ func trigger_game_over():
 
 
 func _on_level_cleared():
-	var popup : Control = ui.get_node("Game Won Popup")
+	var popup : Control = ui.get_node("Level Cleared Popup")
 	popup.stop_game()
+	popup.button_next_level.pressed.connect(func () -> void:
+		get_tree().paused = false
+		get_tree().change_scene_to_file(next_level)
+		)
