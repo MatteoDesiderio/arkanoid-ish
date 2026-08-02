@@ -32,7 +32,8 @@ func _ready() -> void:
 	no_bricks_left.connect(_win_level)
 	_initialize_game_status()
 
-
+func _win():
+	print('U Win!!')
 
 func _process(_delta: float) -> void:
 	if ball.is_active == false:
