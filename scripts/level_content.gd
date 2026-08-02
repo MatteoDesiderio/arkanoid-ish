@@ -17,12 +17,19 @@ extends Node2D
 var life_points : int = 3
 ## Tracks the damage of each brick
 var damage_tracker : Dictionary[Vector2i, int] = {}
-## Tracks how many destructible bricks are left
-var brick_count : int = 0
+## Tracks how many destructible bricks are left. Emits 'no_bricks_left' when 0
+var brick_count : int = 0 :
+	set(new_brick_count):
+		brick_count = new_brick_count
+		if brick_count <= 0:
+			emit_signal("no_bricks_left")
 #endregion
 
+
+#region Signals
 ## Emitted when all bricks have been destroyed
 signal no_bricks_left 
+#endregion
 
 func _ready() -> void:
 	ball.brick_hit.connect(_on_brick_hit)
@@ -32,8 +39,9 @@ func _ready() -> void:
 	no_bricks_left.connect(_win_level)
 	_initialize_game_status()
 
-func _win():
+func _win_level():
 	print('U Win!!')
+
 
 func _process(_delta: float) -> void:
 	if ball.is_active == false:
