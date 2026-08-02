@@ -1,15 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbvgb78uak2o5"]
+[gd_scene load_steps=2 format=3 uid="uid://dj8tq3os1ilcy"]
 
-[ext_resource type="Script" uid="uid://cvvgxd8whemka" path="res://scripts/game_over_popup.gd" id="1_m1vb8"]
+[ext_resource type="Script" uid="uid://b5bgitefu8obj" path="res://scenes/game_won_popup.gd" id="1_mwxff"]
 
-[node name="Game Over Popup" type="Control"]
+[node name="Game Won Popup" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_m1vb8")
+script = ExtResource("1_mwxff")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -35,9 +35,9 @@ offset_right = -238.0
 offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Back to Menu"
+text = "Back to menu"
 
-[node name="Button Try Again" type="Button" parent="Panel"]
+[node name="Button Next Level" type="Button" parent="Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -49,4 +49,4 @@ offset_right = -30.0
 offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Try Again"
+text = "Next level"

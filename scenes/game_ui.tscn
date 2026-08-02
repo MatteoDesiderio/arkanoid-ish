@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjfhr5k8fv8s6"]
 
-[ext_resource type="Script" uid="uid://c6jbtgdyj0plt" path="res://scenes/game_ui.gd" id="1_rns2u"]
+[ext_resource type="Script" uid="uid://c6jbtgdyj0plt" path="res://scripts/game_ui.gd" id="1_rns2u"]
 [ext_resource type="Texture2D" uid="uid://dlha4akgcvehy" path="res://textures/placeholders/health_point.png" id="1_yubou"]
 
 [node name="Game UI" type="Control"]

@@ -7,7 +7,10 @@ extends Node2D
 @onready var platform: Platform = %Platform
 ## Bricks of the level
 @onready var bricks: TileMapLayer = %Bricks
-## UI
+#endregion
+
+#region UI
+## UI: health, score & menu button; game over popup; game won popup
 @onready var ui: CanvasLayer = %"UI"
 #endregion
 
@@ -22,25 +25,23 @@ var brick_count : int = 0 :
 	set(new_brick_count):
 		brick_count = new_brick_count
 		if brick_count <= 0:
-			emit_signal("no_bricks_left")
+			emit_signal("level_cleared")
 #endregion
 
 
 #region Signals
 ## Emitted when all bricks have been destroyed
-signal no_bricks_left 
+signal level_cleared 
 #endregion
+
 
 func _ready() -> void:
 	ball.brick_hit.connect(_on_brick_hit)
 	ball.platform_hit.connect(_on_platform_hit)
 	ball.walls_hit.connect(_on_walls_hit)
 	ball.ground_hit.connect(_on_ground_hit)
-	no_bricks_left.connect(_win_level)
+	level_cleared.connect(_on_level_cleared)
 	_initialize_game_status()
-
-func _win_level():
-	print('U Win!!')
 
 
 func _process(_delta: float) -> void:
@@ -150,4 +151,9 @@ func damage_life_points() -> void:
 
 func trigger_game_over():
 	var popup : Control = ui.get_node("Game Over Popup")
+	popup.stop_game()
+
+
+func _on_level_cleared():
+	var popup : Control = ui.get_node("Game Won Popup")
 	popup.stop_game()
