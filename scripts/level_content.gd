@@ -12,7 +12,7 @@ var life_points : int = 3
 ## Bricks of the level
 @onready var bricks: TileMapLayer = %Bricks
 ## UI
-@onready var game_ui: Control = %"Game UI"
+@onready var ui: CanvasLayer = %"UI"
 
 
 
@@ -105,7 +105,12 @@ func _show_damage(cell_position : Vector2i, previous_damage : int) -> void:
 
 func damage_life_points() -> void:
 	life_points -= 1
-	game_ui.decrease_life_points_by_one()
+	ui.get_node("Game UI").decrease_life_points_by_one()
 	
 	if life_points <= 0:
-		print('Game Over')
+		trigger_game_over()
+
+
+func trigger_game_over():
+	var popup : Control = ui.get_node("Game Over Popup")
+	popup.stop_game()

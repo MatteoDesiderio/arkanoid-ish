@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://dx0adebcmky0t"]
+[gd_scene load_steps=8 format=4 uid="uid://dx0adebcmky0t"]
 
 [ext_resource type="Script" uid="uid://d1g2ssktqbtxl" path="res://scripts/level_content.gd" id="1_s5lsf"]
 [ext_resource type="PackedScene" uid="uid://ck5dc8d36s6rp" path="res://scenes/bricks.tscn" id="5_2yjts"]
 [ext_resource type="PackedScene" uid="uid://cjfhr5k8fv8s6" path="res://scenes/game_ui.tscn" id="6_qqmpb"]
 [ext_resource type="PackedScene" uid="uid://o25w85ghrjdg" path="res://scenes/ball.tscn" id="7_kae30"]
+[ext_resource type="PackedScene" uid="uid://cbvgb78uak2o5" path="res://scenes/game_over_popup.tscn" id="7_nyp37"]
 [ext_resource type="PackedScene" uid="uid://cch12wwewkxxt" path="res://scenes/walls.tscn" id="8_m775n"]
 [ext_resource type="PackedScene" uid="uid://xmweid82pdgg" path="res://scenes/platform.tscn" id="9_cobrg"]
 
@@ -24,9 +25,12 @@ position = Vector2(320, 960)
 [node name="Bricks" parent="." instance=ExtResource("5_2yjts")]
 unique_name_in_owner = true
 position = Vector2(32, 64)
-tile_map_data = PackedByteArray("AAAAABIAAQAAAAAAAAABABIAAQAAAAAAAAACABIAAQAAAAAAAAADABIAAQAAAAAAAAAEABIAAQAAAAAAAAAFABIAAQAAAAAAAAAGABIAAQAAAAAAAAAHABIAAQAAAAAAAAAIABIAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAABIAAQAAAAAAAAABABIAAQAAAAAAAAACABIAAQAAAAAAAAADABIAAQAAAAAAAAAEABIAAQAAAAAAAAAFABIAAQAAAAAAAAAGABIAAQAAAAAAAAAHABIAAQAAAAAAAAAIABIAAQAAAAAAAAAEABEAAwAAAAAAAAAEABMAAwAAAAAAAAAEABgAAwAAAAAAAAA=")
 
 [node name="UI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
 [node name="Game UI" parent="UI" instance=ExtResource("6_qqmpb")]
-unique_name_in_owner = true
+
+[node name="Game Over Popup" parent="UI" instance=ExtResource("7_nyp37")]
+visible = false
