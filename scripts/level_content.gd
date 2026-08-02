@@ -26,6 +26,19 @@ func _ready() -> void:
 	ball.ground_hit.connect(_on_ground_hit)
 	_fill_damage_tracker()
 
+
+func _process(delta: float) -> void:
+	if ball.is_active == false:
+		ball.position.x = platform.position.x
+
+
+func _input(event: InputEvent) -> void:
+		var is_mouse : bool = event is InputEventMouseButton
+		
+		if (is_mouse == true) and (ball.is_active == false):
+			ball.start()
+
+
 func _on_brick_hit(hit_point : Vector2):
 	platform.get_collision_shape().disabled = false
 
