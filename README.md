@@ -21,15 +21,11 @@ NOTE: For now the source_id of the breakable brick is '2'. Subject to change if 
 
 ## To do:
 - basic main menu
-- implement win conditions
-- powerup mechanism (figure out)
+- implement win game conditions
+- powerup mechanism (figure out: random drop?)
 - level score (that resets when losing)
 - add random direction when ball stuck for too long (it happens)
 
-### Winning the level
-- each brick has custom property 'points'
-- count bricks: when all bricks destroyed, win game 
-- go to next level when win
 
 <br>
 Other items on checklist will come later. 
