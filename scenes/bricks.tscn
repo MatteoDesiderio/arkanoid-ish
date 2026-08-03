@@ -14,6 +14,7 @@ texture_region_size = Vector2i(64, 32)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -16, 32, -16, 32, 16, -32, 16)
 0:0/0/custom_data_0 = true
 0:0/0/custom_data_1 = 1
+0:0/0/custom_data_2 = 1
 
 [sub_resource type="Shader" id="Shader_4f3jl"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.5.1.stable's CanvasItemMaterial.
@@ -49,6 +50,7 @@ texture_region_size = Vector2i(64, 32)
 0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -16, 32, -16, 32, 16, -32, 16)
 0:0/2/custom_data_0 = true
 0:0/2/custom_data_1 = 3
+0:0/2/custom_data_2 = 3
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f57ag"]
 texture = ExtResource("3_ca8ln")
@@ -64,6 +66,8 @@ custom_data_layer_0/name = "is_breakable"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "max_damage"
 custom_data_layer_1/type = 2
+custom_data_layer_2/name = "points"
+custom_data_layer_2/type = 2
 sources/1 = SubResource("TileSetAtlasSource_pip8f")
 sources/2 = SubResource("TileSetAtlasSource_4f3jl")
 sources/3 = SubResource("TileSetAtlasSource_f57ag")

@@ -161,6 +161,7 @@ func trigger_game_over():
 func _on_level_cleared():
 	var popup : Control = ui.get_node("Level Cleared Popup")
 	popup.stop_game()
+	
 	popup.button_next_level.pressed.connect(func () -> void:
 		get_tree().paused = false
 		get_tree().change_scene_to_file(next_level)
