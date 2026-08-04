@@ -22,6 +22,8 @@ extends Node2D
 #region Game status
 ## Health. Game over when reaches 0
 var life_points : int = 3
+## Player Score
+var current_score : int = 0
 ## Tracks the damage of each brick
 var damage_tracker : Dictionary[Vector2i, int] = {}
 ## Tracks how many destructible bricks are left. Emits 'no_bricks_left' when 0
@@ -64,6 +66,8 @@ func _on_brick_hit(hit_point : Vector2):
 	platform.get_collision_shape().disabled = false
 
 	var hit_cell_position : = get_closest_cell_to_point(hit_point)
+	# in this order, otherwise the brick is already destroyed
+	update_score(hit_cell_position) 
 	damage_and_break_brick(hit_cell_position)
 
 
@@ -98,6 +102,12 @@ func get_closest_cell_to_point(point : Vector2) -> Vector2i:
 	var distances_from_hit : = cells_positions.map(hit_point_local.distance_to)
 	var idx_closest : int = distances_from_hit.find(distances_from_hit.min())
 	return cells[idx_closest] 
+
+
+func update_score(cell_position : Vector2i) -> void:
+	var brick_score : = _get_brick_points(cell_position)
+	var new_score : = current_score + brick_score 
+	ui.get_node("Game UI").update_score_label(new_score)
 
 
 func damage_and_break_brick(cell_position : Vector2i) -> void:
@@ -137,6 +147,11 @@ func _set_current_damage(cell_position : Vector2i, inflicted_damage : int) -> vo
 func _get_max_damage(cell_position : Vector2i) -> int:
 	var data : = bricks.get_cell_tile_data(cell_position)
 	return data.get_custom_data('max_damage')
+
+
+func _get_brick_points(cell_position : Vector2i) -> int:
+	var data : = bricks.get_cell_tile_data(cell_position)
+	return data.get_custom_data('points')
 
 
 func _show_damage(cell_position : Vector2i, previous_damage : int) -> void:
