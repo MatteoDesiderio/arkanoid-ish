@@ -106,8 +106,8 @@ func get_closest_cell_to_point(point : Vector2) -> Vector2i:
 
 func update_score(cell_position : Vector2i) -> void:
 	var brick_score : = _get_brick_points(cell_position)
-	var new_score : = current_score + brick_score 
-	ui.get_node("Game UI").update_score_label(new_score)
+	current_score += brick_score
+	ui.get_node("Game UI").update_score_label(current_score)
 
 
 func damage_and_break_brick(cell_position : Vector2i) -> void:
