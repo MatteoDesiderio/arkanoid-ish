@@ -2,7 +2,6 @@ extends Node2D
 
 @export_file_path var next_level : String
 
-#@export var game_data_list : GameDataList = load("res://others/game_data_list_test.tres")
 
 #region Objects
 ## Bouncy ball
@@ -43,8 +42,6 @@ signal level_cleared
 
 
 func _ready() -> void:
-	#print(game_data_list.stats[1]['high_score'])
-	
 	ball.brick_hit.connect(_on_brick_hit)
 	ball.platform_hit.connect(_on_platform_hit)
 	ball.walls_hit.connect(_on_walls_hit)
@@ -184,5 +181,3 @@ func _on_level_cleared():
 		get_tree().paused = false
 		get_tree().change_scene_to_file(next_level)
 		)
-	#var previous_high_score = game_data_list.stats[1]['high_score']
-	#game_data_list.stats[1]['high_score'] = max(current_score, previous_high_score)

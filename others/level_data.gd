@@ -1,40 +1,36 @@
 class_name LevelData extends Resource
 
-@export var index : int 
-@export var number_of_levels : int
+
 @export_file_path("res://scenes/levels/level*tscn") var current_level_path : String
 @export_file_path("res://scenes/levels/level*tscn") var next_level_path : String
 @export var is_unlocked : bool
-@export var high_score : int
 
+var number_of_levels : int
+var high_score : int
+var level_index : int
 
 func _init(
-	p_index = 1, 
+	p_level_index = 0,
 	p_number_of_levels = 1,
 	p_current_level_path = "",
 	p_next_level_path = "",
 	p_is_unlocked = false,
 	p_high_score = 0,
 	) -> void:
-		index = p_index
-		number_of_levels = p_number_of_levels
-		
-		var levels_path = "res://scenes/levels/"
-		var index_next = index + 1
-		
-		# TODO: when true, change next_level_path to main menu scene, as soon as main menu exists
-		if index_next > p_number_of_levels:
-			index_next = 1
+		print('initializing level data')
 
-		current_level_path = levels_path + "level_" + str(index) + ".tscn"
-		next_level_path =  levels_path + "level_" + str(index+1) + ".tscn"
+		level_index = p_level_index
+		number_of_levels = p_number_of_levels
+
+		current_level_path = p_current_level_path
+		next_level_path =  p_next_level_path
 		
-		if index == 1:
+		is_unlocked = p_is_unlocked
+		
+		if level_index == 0:
 			is_unlocked = true
-		else:
-			is_unlocked = false
 		
-		high_score = 0
+		high_score = p_high_score
 		
 			
 	
