@@ -1,13 +1,16 @@
 class_name LevelData extends Resource
 
 
+var level_index : int
+var number_of_levels : int
+@export var is_unlocked : bool
+@export var high_score : int
+@export_group("Paths")
 @export_file_path("res://scenes/levels/level*tscn") var current_level_path : String
 @export_file_path("res://scenes/levels/level*tscn") var next_level_path : String
-@export var is_unlocked : bool
 
-@export var number_of_levels : int
-@export var high_score : int
-@export var level_index : int
+
+
 
 func _init(
 	p_level_index = 0,
@@ -17,7 +20,7 @@ func _init(
 	p_is_unlocked = false,
 	p_high_score = 0
 	) -> void:
-		
+
 		level_index = p_level_index
 		number_of_levels = p_number_of_levels
 		current_level_path = p_current_level_path

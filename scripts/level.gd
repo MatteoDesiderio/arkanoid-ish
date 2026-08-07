@@ -191,7 +191,6 @@ func _update_game_data() -> void:
 	var current_level_path : = scene_file_path
 
 	for level_data : LevelData in game_data.level_data_list:
-		print(level_data.is_unlocked)
 		if level_data.current_level_path == current_level_path:
 			print('Next level: ', next_level)
 			next_level = level_data.next_level_path
@@ -208,9 +207,6 @@ func _update_game_data() -> void:
 				)
 			level_data.is_unlocked = true
 			print(level_data.is_unlocked)
-			print()
-			print('---------------------')
-			print()
-			
+
+	game_data.take_over_path("res://others/my_game_data.tres")
 	ResourceSaver.save(game_data, "res://others/my_game_data.tres")
-	

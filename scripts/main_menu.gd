@@ -6,7 +6,7 @@ extends Control
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		push_warning("Resetting the game data. Levels > 0 are now locked again.")
-		_setup_utility()
+		reset_game_data()
 		return
 
 	if not Engine.is_editor_hint():
@@ -14,8 +14,9 @@ func _ready() -> void:
 			"res://others/my_game_data.tres", 
 			"GameData"
 			)
+		return
 
-func _setup_utility():
+func reset_game_data():
 	## Create Game Data Resource in editor for the first time
 	var search_path : = "res://scenes/levels/"
 	var level_paths : = DirAccess.get_files_at(search_path)
