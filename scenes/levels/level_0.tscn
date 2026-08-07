@@ -11,6 +11,7 @@
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_65guy")
+next_level = "res://scenes/levels/level_1.tscn"
 
 [node name="Ball" parent="." instance=ExtResource("3_34hum")]
 unique_name_in_owner = true

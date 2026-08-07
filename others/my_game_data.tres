@@ -1,29 +1,43 @@
-[gd_resource type="Resource" script_class="GameData" load_steps=7 format=3 uid="uid://b30mrunmgxfw4"]
+[gd_resource type="Resource" script_class="GameData" load_steps=7 format=3]
 
-[ext_resource type="Script" uid="uid://dnw8f6vtsh204" path="res://others/level_data.gd" id="1_h4i8h"]
-[ext_resource type="Script" uid="uid://bwj44a1inqmfp" path="res://others/game_data.gd" id="2_45as0"]
+[ext_resource type="Script" path="res://others/level_data.gd" id="1_h4i8h"]
+[ext_resource type="Script" path="res://others/game_data.gd" id="2_45as0"]
+
+[sub_resource type="Resource" id="Resource_h4i8h"]
+script = ExtResource("1_h4i8h")
+current_level_path = "res://scenes/levels/level_0.tscn"
+next_level_path = "res://scenes/levels/level_1.tscn"
+is_unlocked = true
+number_of_levels = 4
+high_score = 1
+
+[sub_resource type="Resource" id="Resource_45as0"]
+script = ExtResource("1_h4i8h")
+current_level_path = "res://scenes/levels/level_1.tscn"
+next_level_path = "res://scenes/levels/level_2.tscn"
+is_unlocked = true
+number_of_levels = 4
+high_score = 1
+level_index = 1
 
 [sub_resource type="Resource" id="Resource_lrbr8"]
 script = ExtResource("1_h4i8h")
-current_level_path = "level_0.tscn"
-next_level_path = "level_1.tscn"
+current_level_path = "res://scenes/levels/level_2.tscn"
+next_level_path = "res://scenes/levels/level_3.tscn"
 is_unlocked = true
+number_of_levels = 4
+high_score = 4
+level_index = 2
 
 [sub_resource type="Resource" id="Resource_yqrm4"]
 script = ExtResource("1_h4i8h")
-current_level_path = "level_1.tscn"
-next_level_path = "level_2.tscn"
-
-[sub_resource type="Resource" id="Resource_1b54x"]
-script = ExtResource("1_h4i8h")
-current_level_path = "level_2.tscn"
-next_level_path = "level_3.tscn"
-
-[sub_resource type="Resource" id="Resource_xl3vj"]
-script = ExtResource("1_h4i8h")
-current_level_path = "level_3.tscn"
-next_level_path = "level_0.tscn"
+current_level_path = "res://scenes/levels/level_3.tscn"
+next_level_path = "res://scenes/levels/level_0.tscn"
+is_unlocked = true
+number_of_levels = 4
+high_score = 4
+level_index = 3
 
 [resource]
 script = ExtResource("2_45as0")
-level_data_list = Array[ExtResource("1_h4i8h")]([SubResource("Resource_lrbr8"), SubResource("Resource_yqrm4"), SubResource("Resource_1b54x"), SubResource("Resource_xl3vj")])
+level_data_list = Array[ExtResource("1_h4i8h")]([SubResource("Resource_h4i8h"), SubResource("Resource_45as0"), SubResource("Resource_lrbr8"), SubResource("Resource_yqrm4")])

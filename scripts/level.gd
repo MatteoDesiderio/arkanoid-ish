@@ -1,7 +1,9 @@
 extends Node2D
 
 @export_file_path var next_level : String
-
+var game_data : = ResourceLoader.load(
+	"res://others/my_game_data.tres",
+	"GameData")
 
 #region Objects
 ## Bouncy ball
@@ -174,6 +176,8 @@ func trigger_game_over():
 
 
 func _on_level_cleared():
+	_update_game_data()
+
 	var popup : Control = ui.get_node("Level Cleared Popup")
 	popup.stop_game()
 	
@@ -181,3 +185,32 @@ func _on_level_cleared():
 		get_tree().paused = false
 		get_tree().change_scene_to_file(next_level)
 		)
+
+
+func _update_game_data() -> void:
+	var current_level_path : = scene_file_path
+
+	for level_data : LevelData in game_data.level_data_list:
+		print(level_data.is_unlocked)
+		if level_data.current_level_path == current_level_path:
+			print('Next level: ', next_level)
+			next_level = level_data.next_level_path
+			print('should be same as: ', next_level)
+			print('Old high score: ', level_data.high_score)
+			level_data.high_score = current_score
+			print('New high score: ', level_data.high_score)
+
+	for level_data : LevelData in game_data.level_data_list:
+		if level_data.current_level_path == next_level:
+			print(
+				'Unlock status for: ', level_data.current_level_path,
+				' is ', level_data.is_unlocked, ' changing to: '
+				)
+			level_data.is_unlocked = true
+			print(level_data.is_unlocked)
+			print()
+			print('---------------------')
+			print()
+			
+	ResourceSaver.save(game_data, "res://others/my_game_data.tres")
+	
