@@ -1,11 +1,11 @@
-@tool
+#@tool
 extends Control
 
 @export var game_data : GameData
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
-		push_warning("Resetting the game data. Levels > 0 are now locked again.")
+		print("Resetting the game data. Levels > 0 are now locked again.")
 		reset_game_data()
 		return
 

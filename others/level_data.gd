@@ -10,8 +10,6 @@ var number_of_levels : int
 @export_file_path("res://scenes/levels/level*tscn") var next_level_path : String
 
 
-
-
 func _init(
 	p_level_index = 0,
 	p_number_of_levels = 1,
