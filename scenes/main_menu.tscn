@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://56h6y0eh4eb1"]
+[gd_scene load_steps=7 format=3 uid="uid://56h6y0eh4eb1"]
 
 [ext_resource type="Script" uid="uid://d368611hbg5qh" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Resource" uid="uid://wbltg7c10lhx" path="res://others/my_game_data.tres" id="2_ekxnf"]
+
+[sub_resource type="Gradient" id="Gradient_ekxnf"]
+offsets = PackedFloat32Array(0.53072625, 1)
+colors = PackedColorArray(0, 0.36078432, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bqqt6"]
+gradient = SubResource("Gradient_ekxnf")
+
+[sub_resource type="Gradient" id="Gradient_wu84c"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8ln24"]
+gradient = SubResource("Gradient_wu84c")
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -12,3 +24,213 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
 game_data = ExtResource("2_ekxnf")
+
+[node name="Main Dialog" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_bqqt6")
+
+[node name="Panel" type="Panel" parent="Main Dialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 110.0
+offset_top = 356.0
+offset_right = -110.0
+offset_bottom = -300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main Dialog/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Dialog/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="New Game Button" type="Button" parent="Main Dialog/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Select level"
+
+[node name="HSeparator" type="HSeparator" parent="Main Dialog/Panel/MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Options Button" type="Button" parent="Main Dialog/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Options"
+
+[node name="Options Dialog" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_8ln24")
+
+[node name="Panel" type="Panel" parent="Options Dialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 110.0
+offset_top = 356.0
+offset_right = -110.0
+offset_bottom = -300.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Options Dialog/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options Dialog/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Top Bar" type="Panel" parent="Options Dialog/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+
+[node name="Back Button" type="Button" parent="Options Dialog/Panel/MarginContainer/VBoxContainer/Top Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 314.0
+offset_top = 6.5
+offset_right = -7.0
+offset_bottom = -6.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Go back"
+
+[node name="HSeparator2" type="HSeparator" parent="Options Dialog/Panel/MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 33
+
+[node name="Volume Controls" type="VBoxContainer" parent="Options Dialog/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Music" type="HBoxContainer" parent="Options Dialog/Panel/MarginContainer/VBoxContainer/Volume Controls"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSlider" type="HSlider" parent="Options Dialog/Panel/MarginContainer/VBoxContainer/Volume Controls/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+
+[node name="Label" type="Label" parent="Options Dialog/Panel/MarginContainer/VBoxContainer/Volume Controls/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Music Volume"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SFX" type="HBoxContainer" parent="Options Dialog/Panel/MarginContainer/VBoxContainer/Volume Controls"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSlider" type="HSlider" parent="Options Dialog/Panel/MarginContainer/VBoxContainer/Volume Controls/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+
+[node name="Label" type="Label" parent="Options Dialog/Panel/MarginContainer/VBoxContainer/Volume Controls/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "SFX Volume"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Options Dialog/Panel/MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 33
+
+[node name="Delete Data Button" type="Button" parent="Options Dialog/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
+text = "Delete Data"
+
+[node name="Level Selection" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_bqqt6")
+
+[node name="Levels Container" type="VBoxContainer" parent="Level Selection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 46.0
+offset_right = -40.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top Bar" type="Panel" parent="Level Selection/Levels Container"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Back Button" type="Button" parent="Level Selection/Levels Container/Top Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 459.0
+offset_top = 15.0
+offset_right = -10.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Go back"
+
+[node name="Levels Grid" type="GridContainer" parent="Level Selection/Levels Container"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 5
