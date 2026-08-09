@@ -1,4 +1,4 @@
-extends TextureRect
+class_name SubMenu extends TextureRect
 
 @export var back_button: Button
 

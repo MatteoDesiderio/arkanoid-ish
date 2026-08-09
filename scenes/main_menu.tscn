@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://56h6y0eh4eb1"]
+[gd_scene load_steps=9 format=3 uid="uid://56h6y0eh4eb1"]
 
 [ext_resource type="Script" uid="uid://d368611hbg5qh" path="res://scripts/main_menu.gd" id="1_l6cm7"]
-[ext_resource type="Resource" uid="uid://wbltg7c10lhx" path="res://others/my_game_data.tres" id="2_ekxnf"]
-[ext_resource type="Script" uid="uid://cmmm48bikx5bj" path="res://scenes/sub_menu.gd" id="3_bqqt6"]
+[ext_resource type="Resource" uid="uid://xf8aitd5sbpw" path="res://others/my_game_data.tres" id="2_ekxnf"]
+[ext_resource type="Script" uid="uid://cex2b1x7dvcq" path="res://scenes/options_sub_menu.gd" id="3_wu84c"]
+[ext_resource type="Script" uid="uid://d1xedy7l5tuwt" path="res://scenes/level_selection_sub_menu.gd" id="4_wu84c"]
 
 [sub_resource type="Gradient" id="Gradient_ekxnf"]
 offsets = PackedFloat32Array(0.53072625, 1)
@@ -90,7 +91,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_8ln24")
-script = ExtResource("3_bqqt6")
+script = ExtResource("3_wu84c")
 back_button = NodePath("Panel/MarginContainer/VBoxContainer/Top Bar/Back Button")
 
 [node name="Panel" type="Panel" parent="Options Sub Menu"]
@@ -205,7 +206,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_bqqt6")
-script = ExtResource("3_bqqt6")
+script = ExtResource("4_wu84c")
 back_button = NodePath("Levels Container/Top Bar/Back Button")
 
 [node name="Levels Container" type="VBoxContainer" parent="Level Selection Sub Menu"]
@@ -239,6 +240,7 @@ grow_vertical = 2
 text = "Go back"
 
 [node name="Levels Grid" type="GridContainer" parent="Level Selection Sub Menu/Levels Container"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 columns = 5

@@ -24,6 +24,9 @@ func _ready() -> void:
 
 		select_level_button.pressed.connect(_on_select_level_button_pressed)
 		options_button.pressed.connect(_on_options_button_pressed)
+		
+		level_selection_sub_menu.fill_grid(game_data.level_data_list)
+
 
 func _on_select_level_button_pressed() -> void:
 	level_selection_sub_menu.show()
