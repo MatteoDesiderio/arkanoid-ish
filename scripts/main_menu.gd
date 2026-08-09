@@ -3,6 +3,13 @@ extends Control
 
 @export var game_data : GameData
 
+@onready var select_level_button: Button = %"Select Level Button"
+@onready var level_selection_sub_menu: TextureRect = %"Level Selection Sub Menu"
+
+@onready var options_button: Button = %"Options Button"
+@onready var options_sub_menu: TextureRect = %"Options Sub Menu"
+
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		print("Resetting the game data. Levels > 0 are now locked again.")
@@ -14,7 +21,17 @@ func _ready() -> void:
 			"res://others/my_game_data.tres", 
 			"GameData"
 			)
-		return
+
+		select_level_button.pressed.connect(_on_select_level_button_pressed)
+		options_button.pressed.connect(_on_options_button_pressed)
+
+func _on_select_level_button_pressed() -> void:
+	level_selection_sub_menu.show()
+
+
+func _on_options_button_pressed() -> void:
+	options_sub_menu.show()
+
 
 func reset_game_data():
 	## Create Game Data Resource in editor for the first time
