@@ -1,8 +1,8 @@
 class_name LevelData extends Resource
 
 
-var level_index : int
-var number_of_levels : int
+@export var level_index : int
+@export var number_of_levels : int
 @export var is_unlocked : bool
 @export var high_score : int
 @export_group("Paths")
