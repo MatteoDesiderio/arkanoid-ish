@@ -11,12 +11,14 @@ func fill_grid(level_data_list : Array[LevelData]) -> void:
 	var width = _get_button_width(n_columns)
 	
 	for level_data : LevelData in level_data_list:
-		var panel : = Panel.new()
-		
-		panel.custom_minimum_size.x = width
-		panel.custom_minimum_size.y = width
-		levels_grid.add_child(panel)
-		
+		# TODO: create a separate scene, to display level num,  highscore etc.
+		var button : Button = load("res://scenes/level_button.tscn").instantiate()	
+		levels_grid.add_child(button)
+		button.setup(level_data)
+		button.resize(width)
+
+
+
 
 func _get_button_width(n_buttons_in_row : int) -> float:
 	var width : float = levels_grid.get_parent_area_size().x

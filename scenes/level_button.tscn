@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4aqcpijj0sxn"]
+
+[ext_resource type="Script" uid="uid://pakwp0lsh0a2" path="res://scenes/level_button.gd" id="1_i0sit"]
+
+[node name="Level Button" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+script = ExtResource("1_i0sit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label Count" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "1/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="High Score" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/High Score"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "High score:"
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[node name="Counter" type="Label" parent="VBoxContainer/High Score"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 23.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "000"
+horizontal_alignment = 1

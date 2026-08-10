@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://56h6y0eh4eb1"]
 
 [ext_resource type="Script" uid="uid://d368611hbg5qh" path="res://scripts/main_menu.gd" id="1_l6cm7"]
-[ext_resource type="Resource" uid="uid://xf8aitd5sbpw" path="res://others/my_game_data.tres" id="2_ekxnf"]
-[ext_resource type="Script" uid="uid://cex2b1x7dvcq" path="res://scenes/options_sub_menu.gd" id="3_wu84c"]
-[ext_resource type="Script" uid="uid://d1xedy7l5tuwt" path="res://scenes/level_selection_sub_menu.gd" id="4_wu84c"]
+[ext_resource type="Resource" uid="uid://bcidhjbdi65a6" path="res://others/my_game_data.tres" id="2_ekxnf"]
+[ext_resource type="Script" uid="uid://cex2b1x7dvcq" path="res://scripts/options_sub_menu.gd" id="3_wu84c"]
+[ext_resource type="Script" uid="uid://d1xedy7l5tuwt" path="res://scripts/level_selection_sub_menu.gd" id="4_wu84c"]
 
 [sub_resource type="Gradient" id="Gradient_ekxnf"]
 offsets = PackedFloat32Array(0.53072625, 1)
@@ -198,6 +198,7 @@ text = "Delete Data"
 
 [node name="Level Selection Sub Menu" type="TextureRect" parent="." node_paths=PackedStringArray("back_button")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
