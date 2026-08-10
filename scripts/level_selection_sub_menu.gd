@@ -13,11 +13,10 @@ func fill_grid(level_data_list : Array[LevelData]) -> void:
 	for level_data : LevelData in level_data_list:
 		# TODO: create a separate scene, to display level num,  highscore etc.
 		var button : Button = load("res://scenes/level_button.tscn").instantiate()	
+		button.level_data = level_data
 		levels_grid.add_child(button)
-		button.setup(level_data)
+		button.setup()
 		button.resize(width)
-
-
 
 
 func _get_button_width(n_buttons_in_row : int) -> float:
