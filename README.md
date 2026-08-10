@@ -20,13 +20,15 @@ The bricks scene is originally empty, but is changed/designed in the editor manu
 NOTE: For now the source_id of the breakable brick is '2'. Subject to change if tiles change 
 
 ## To do:
-- generate new game data when game is started for the very first time
-- but keep the game data when the player exits the game
-- add option to reset game data 
-- basic main menu
-- implement win game conditions
+- implement win game conditions (all levels cleared)
 - powerup mechanism (figure out: random drop?)
 - add random direction when ball stuck for too long in some bounce configuration (it happens) 
+
+- options: music and SFX volume
+- pause button: what's in it? Options? Back to menu?
+- when u win level, go back to menu when relevant button is pressed 
+
+- powerups: figure out how many etc.
 
 
 <br>
