@@ -6,8 +6,9 @@ extends Button
 
 var level_data : LevelData
 
+
 func _ready() -> void:
-	pass
+	pressed.connect(_on_pressed)
 
 
 func setup() -> void:
@@ -21,7 +22,8 @@ func resize(width : float) -> void:
 
 
 func _on_pressed() -> void:
-	pass
+	get_tree().change_scene_to_file(level_data.current_level_path)
+	
 	
 	
 	
