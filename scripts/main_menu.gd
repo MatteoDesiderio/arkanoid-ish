@@ -1,4 +1,4 @@
-#@tool
+@tool
 extends Control
 
 @export var game_data : GameData
@@ -42,7 +42,7 @@ func reset_game_data():
 	var level_paths : = DirAccess.get_files_at(search_path)
 	var next_level_paths : = level_paths.duplicate()
 	var num_lvls : int = level_paths.size()
-	# TODO: instead of looping back to 1st level, send it to main menu or cutscene
+
 	next_level_paths.append(level_paths[0])
 	next_level_paths.remove_at(0)
 	
@@ -57,7 +57,10 @@ func reset_game_data():
 			is_unlocked
 			)
 		level_data_list.append(level_data)
-
+	
+	# send back to main menu
+	level_data_list[-1].next_level_path = scene_file_path
+	
 	var new_game_data : = GameData.new(level_data_list)
 	new_game_data.take_over_path("res://others/my_game_data.tres")
 	ResourceSaver.save(new_game_data, "res://others/my_game_data.tres")

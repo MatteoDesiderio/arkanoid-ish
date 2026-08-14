@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://56h6y0eh4eb1"]
 
 [ext_resource type="Script" uid="uid://d368611hbg5qh" path="res://scripts/main_menu.gd" id="1_l6cm7"]
-[ext_resource type="Resource" uid="uid://bcidhjbdi65a6" path="res://others/my_game_data.tres" id="2_ekxnf"]
+[ext_resource type="Resource" uid="uid://csbvawxphc0im" path="res://others/my_game_data.tres" id="2_ekxnf"]
 [ext_resource type="Script" uid="uid://cex2b1x7dvcq" path="res://scripts/options_sub_menu.gd" id="3_wu84c"]
 [ext_resource type="Script" uid="uid://d1xedy7l5tuwt" path="res://scripts/level_selection_sub_menu.gd" id="4_wu84c"]
 
