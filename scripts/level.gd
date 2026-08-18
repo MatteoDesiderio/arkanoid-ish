@@ -22,6 +22,8 @@ var game_data : = ResourceLoader.load(
 
 
 #region Game status
+## Chance of spawning a Powerup
+@export_range(0, 100) var powerup_chance_perc : float = 10.0
 ## Health. Game over when reaches 0
 var life_points : int = 3
 ## Player Score
@@ -34,6 +36,10 @@ var brick_count : int = 0 :
 		brick_count = new_brick_count
 		if brick_count <= 0:
 			emit_signal("level_cleared")
+## Powerup template scene
+var powerup : PackedScene = preload("res://scenes/powerup.tscn")
+## The Random Number Generator used in the level 
+var rng : = RandomNumberGenerator.new()
 #endregion
 
 
@@ -69,7 +75,7 @@ func _on_brick_hit(hit_point : Vector2):
 
 	var hit_cell_position : = get_closest_cell_to_point(hit_point)
 	# in this order, otherwise the brick is already destroyed
-	update_score(hit_cell_position) 
+	update_score(hit_cell_position)
 	damage_and_break_brick(hit_cell_position)
 
 
@@ -106,6 +112,20 @@ func get_closest_cell_to_point(point : Vector2) -> Vector2i:
 	return cells[idx_closest] 
 
 
+func _spawn_powerup(point : Vector2) -> void:
+	
+	var outcomes : Array[bool] = [false, true]
+	var weights : PackedFloat32Array = [1 - powerup_chance_perc / 100, powerup_chance_perc / 100]
+	var is_spawn_successful = outcomes[rng.rand_weighted(weights)] 
+	
+	if not is_spawn_successful:
+		return
+
+	var powerup_instance : Area2D = powerup.instantiate()
+	powerup_instance.position = point
+	add_child(powerup_instance)
+
+
 func update_score(cell_position : Vector2i) -> void:
 	var brick_score : = _get_brick_points(cell_position)
 	current_score += brick_score
@@ -128,8 +148,9 @@ func damage_and_break_brick(cell_position : Vector2i) -> void:
 		bricks.erase_cell(cell_position)
 		brick_count -= 1
 		# early return to avoid alt_tile ID increase beyond max in _show_damage
+		_spawn_powerup(bricks.map_to_local(cell_position))
 		return 
-
+	
 	_show_damage(cell_position, previous_damage)
 
 
