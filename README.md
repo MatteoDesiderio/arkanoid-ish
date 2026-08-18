@@ -28,7 +28,14 @@ NOTE: For now the source_id of the breakable brick is '2'. Subject to change if 
 - pause button: what's in it? Options? Back to menu?
 - when u win level, go back to menu when relevant button is pressed 
 
-- powerups: figure out how many etc.
+- powerup base scene has script with x% chance of being a given type of powerup
+- change look of powerup when spawn based on type 
+- powerup info is a resource
+- when catch powerup send signal with powerup info to level manager
+- level manager applies the powerup to ball or platform
+- platform powerups: length, stick
+- ball powerup: multiply, bomb, eraser
+- other: life point, score mult
 
 
 <br>

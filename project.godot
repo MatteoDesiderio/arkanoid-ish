@@ -42,6 +42,7 @@ mouse_left={
 2d_physics/layer_2="Ball"
 2d_physics/layer_3="Platform"
 2d_physics/layer_4="Walls"
+2d_physics/layer_5="Powerups"
 
 [rendering]
 

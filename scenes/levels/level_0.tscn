@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://d263t8m6imm0d"]
+[gd_scene load_steps=10 format=4 uid="uid://d263t8m6imm0d"]
 
 [ext_resource type="Script" uid="uid://d1g2ssktqbtxl" path="res://scripts/level.gd" id="1_65guy"]
 [ext_resource type="PackedScene" uid="uid://o25w85ghrjdg" path="res://scenes/ball.tscn" id="3_34hum"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ck5dc8d36s6rp" path="res://scenes/bricks.tscn" id="6_gj3kh"]
 [ext_resource type="PackedScene" uid="uid://cjfhr5k8fv8s6" path="res://scenes/game_ui.tscn" id="7_myogd"]
 [ext_resource type="PackedScene" uid="uid://cbvgb78uak2o5" path="res://scenes/game_over_popup.tscn" id="8_s4l03"]
+[ext_resource type="PackedScene" uid="uid://dr8ka7l6718oq" path="res://powerup.tscn" id="9_65guy"]
 [ext_resource type="PackedScene" uid="uid://dj8tq3os1ilcy" path="res://scenes/level_cleared_popup.tscn" id="9_ypncs"]
 
 [node name="Level" type="Node2D"]
@@ -41,3 +42,6 @@ metadata/_edit_lock_ = true
 [node name="Level Cleared Popup" parent="UI" instance=ExtResource("9_ypncs")]
 visible = false
 metadata/_edit_lock_ = true
+
+[node name="Powerup" parent="." instance=ExtResource("9_65guy")]
+position = Vector2(103, 451)
