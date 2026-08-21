@@ -3,7 +3,7 @@ class_name Powerup extends Area2D
 
 @export var fall_speed : float = 400.0
 
-var powerup_info = null
+var powerup_info : PowerupInfo
 
 signal powerup_obtained
 

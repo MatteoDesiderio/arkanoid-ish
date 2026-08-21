@@ -4,6 +4,7 @@ extends Node2D
 var game_data : = ResourceLoader.load(
 	"res://others/my_game_data.tres",
 	"GameData")
+ 
 
 #region Objects
 ## Bouncy ball
@@ -24,6 +25,12 @@ var game_data : = ResourceLoader.load(
 #region Game status
 ## Chance of spawning a Powerup
 @export_range(0, 100) var powerup_chance_perc : float = 10.0
+## List of possible powerups
+@export var powerup_list : PowerupList 
+## Powerup template scene
+var powerup : PackedScene = preload("res://scenes/powerup.tscn")
+## The Random Number Generator used in the level
+var rng : = RandomNumberGenerator.new()
 ## Health. Game over when reaches 0
 var life_points : int = 3
 ## Player Score
@@ -36,10 +43,6 @@ var brick_count : int = 0 :
 		brick_count = new_brick_count
 		if brick_count <= 0:
 			emit_signal("level_cleared")
-## Powerup template scene
-var powerup : PackedScene = preload("res://scenes/powerup.tscn")
-## The Random Number Generator used in the level 
-var rng : = RandomNumberGenerator.new()
 #endregion
 
 
@@ -114,14 +117,23 @@ func get_closest_cell_to_point(point : Vector2) -> Vector2i:
 
 func _spawn_powerup(point : Vector2) -> void:
 	
+	if not powerup_list:
+		print("Resource 'PowerupList' is not provided")
+		return
+	
+	if not powerup_list.powerups:
+		print("powerups array in the 'PowerupList' resource is empty")
+		return
+	
 	var outcomes : Array[bool] = [false, true]
 	var weights : PackedFloat32Array = [1 - powerup_chance_perc / 100, powerup_chance_perc / 100]
 	var is_spawn_successful = outcomes[rng.rand_weighted(weights)] 
 	
 	if not is_spawn_successful:
 		return
-
+	
 	var powerup_instance : Area2D = powerup.instantiate()
+	powerup_instance.powerup_info = powerup_list.powerups.pick_random()
 	powerup_instance.position = point
 	add_child(powerup_instance)
 

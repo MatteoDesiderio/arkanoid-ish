@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://d263t8m6imm0d"]
+[gd_scene load_steps=14 format=4 uid="uid://d263t8m6imm0d"]
 
 [ext_resource type="Script" uid="uid://d1g2ssktqbtxl" path="res://scripts/level.gd" id="1_65guy"]
+[ext_resource type="Script" uid="uid://but6stieifu6y" path="res://others/powerup_list.gd" id="2_65guy"]
+[ext_resource type="Script" uid="uid://cngs75q8ajovf" path="res://others/powerup_info.gd" id="2_p6rmu"]
 [ext_resource type="PackedScene" uid="uid://o25w85ghrjdg" path="res://scenes/ball.tscn" id="3_34hum"]
 [ext_resource type="PackedScene" uid="uid://cch12wwewkxxt" path="res://scenes/walls.tscn" id="4_vhkxn"]
 [ext_resource type="PackedScene" uid="uid://xmweid82pdgg" path="res://scenes/platform.tscn" id="5_1q7iv"]
@@ -9,9 +11,26 @@
 [ext_resource type="PackedScene" uid="uid://cbvgb78uak2o5" path="res://scenes/game_over_popup.tscn" id="8_s4l03"]
 [ext_resource type="PackedScene" uid="uid://dj8tq3os1ilcy" path="res://scenes/level_cleared_popup.tscn" id="9_ypncs"]
 
+[sub_resource type="Resource" id="Resource_34hum"]
+script = ExtResource("2_p6rmu")
+description = "triple"
+metadata/_custom_type_script = "uid://cngs75q8ajovf"
+
+[sub_resource type="Resource" id="Resource_vhkxn"]
+script = ExtResource("2_p6rmu")
+description = "life"
+metadata/_custom_type_script = "uid://cngs75q8ajovf"
+
+[sub_resource type="Resource" id="Resource_p6rmu"]
+script = ExtResource("2_65guy")
+powerups = Array[ExtResource("2_p6rmu")]([SubResource("Resource_34hum"), SubResource("Resource_vhkxn")])
+metadata/_custom_type_script = "uid://but6stieifu6y"
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_65guy")
 next_level = "res://scenes/levels/level_1.tscn"
+powerup_chance_perc = 100.0
+powerup_list = SubResource("Resource_p6rmu")
 
 [node name="Ball" parent="." instance=ExtResource("3_34hum")]
 unique_name_in_owner = true
