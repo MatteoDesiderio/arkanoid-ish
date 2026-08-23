@@ -13,6 +13,15 @@ func decrease_life_points_by_one() -> void:
 			pass
 
 
+func increase_life_points_by_one() -> void:
+	for point : TextureRect in life_point_container.get_children():
+		if point.visible == false:
+			point.show()
+			break
+		else:
+			pass
+
+
 func increase_life_points() -> void:
 	for point : TextureRect in life_point_container.get_children():
 		point.show()

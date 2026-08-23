@@ -264,9 +264,10 @@ func activate_powerup(powerup_info : PowerupInfoGame) -> void:
 	var description : String = powerup_info.description
 	
 	if description == "life":
-		if life_points >= MAX_LIFE_POINTS:
-			return
-		life_points += 1
+		if life_points < MAX_LIFE_POINTS:
+			life_points += 1
+			ui.get_node("Game UI").increase_life_points_by_one()
+			
 	
 	if description == "points":
 		current_score += 1

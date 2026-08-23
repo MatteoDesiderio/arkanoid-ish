@@ -78,7 +78,8 @@ func _scale_length_by(factor : float) -> void:
 
 
 func _set_active_powerup(powerup_description : String) -> void:
-	## Set active powerup and override the current powerup
+	## Set active powerup and override the current powerup for the platform.
+	## You can have a powerup for the platform and one for the ball 
 	if powerup_description == "length":
 		timer_laser.timeout.emit()
 		timer_sticky.timeout.emit()
