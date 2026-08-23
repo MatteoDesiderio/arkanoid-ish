@@ -20,6 +20,7 @@ The bricks scene is originally empty, but is changed/designed in the editor manu
 NOTE: For now the source_id of the breakable brick is '2'. Subject to change if tiles change 
 
 ## To do:
+- Refactor powerup resource
 - implement win game conditions (all levels cleared)
 - powerup mechanism (figure out: random drop?)
 - add random direction when ball stuck for too long in some bounce configuration (it happens) 
@@ -30,13 +31,8 @@ NOTE: For now the source_id of the breakable brick is '2'. Subject to change if 
 
 - powerup base scene has script with x% chance of being a given type of powerup
 - change look of powerup when spawn based on type 
-- powerup info is a resource
-- when catch powerup send signal with powerup info to level manager
-- level manager applies the powerup to ball or platform
 - platform powerups: length, stick
 - ball powerup: multiply, bomb, eraser
-- other: life point, score mult
-
 
 <br>
 Other items on checklist will come later. 
