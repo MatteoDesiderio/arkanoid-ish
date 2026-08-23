@@ -246,5 +246,6 @@ func _update_game_data() -> void:
 	ResourceSaver.save(game_data, "res://others/my_game_data.tres")
 
 
-func _on_powerup_obtained() -> void:
+func _on_powerup_obtained(powerup_info : PowerupInfo) -> void:
 	print('POWERUP OBTAINED')
+	print(powerup_info.description)

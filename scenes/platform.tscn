@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://xmweid82pdgg"]
+[gd_scene load_steps=6 format=3 uid="uid://xmweid82pdgg"]
 
 [ext_resource type="Texture2D" uid="uid://0dmimh7dd8w1" path="res://textures/placeholders/block_unbreakable.png" id="1_ba0x2"]
 [ext_resource type="Script" uid="uid://dun7r0becpeal" path="res://scripts/platform.gd" id="1_nlgqw"]
+[ext_resource type="Script" uid="uid://dq33k61tyjj0w" path="res://scenes/powerup_catcher.gd" id="3_507ja"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nlgqw"]
 radius = 7.0
@@ -26,6 +27,7 @@ shape = SubResource("CapsuleShape2D_nlgqw")
 [node name="Powerup Catcher" type="StaticBody2D" parent="."]
 collision_layer = 32
 collision_mask = 0
+script = ExtResource("3_507ja")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Powerup Catcher"]
 shape = SubResource("RectangleShape2D_nlgqw")

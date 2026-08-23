@@ -17,6 +17,6 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body : Node2D) -> void:
-	if body is Platform:
-		emit_signal("powerup_obtained")
+	if body is PowerupCatcher:
+		emit_signal("powerup_obtained", powerup_info)
 	queue_free()

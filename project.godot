@@ -43,6 +43,7 @@ mouse_left={
 2d_physics/layer_3="Platform"
 2d_physics/layer_4="Walls"
 2d_physics/layer_5="Powerups"
+2d_physics/layer_6="Powerup Catcher"
 
 [rendering]
 

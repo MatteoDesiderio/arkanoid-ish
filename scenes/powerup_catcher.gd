@@ -1,0 +1,1 @@
+class_name PowerupCatcher extends StaticBody2D
