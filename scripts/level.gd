@@ -136,6 +136,7 @@ func _spawn_powerup(point : Vector2) -> void:
 	powerup_instance.powerup_info = powerup_list.powerups.pick_random()
 	powerup_instance.position = point
 	add_child(powerup_instance)
+	powerup_instance.powerup_obtained.connect(_on_powerup_obtained)
 
 
 func update_score(cell_position : Vector2i) -> void:
@@ -243,3 +244,7 @@ func _update_game_data() -> void:
 
 	game_data.take_over_path("res://others/my_game_data.tres")
 	ResourceSaver.save(game_data, "res://others/my_game_data.tres")
+
+
+func _on_powerup_obtained() -> void:
+	print('POWERUP OBTAINED')

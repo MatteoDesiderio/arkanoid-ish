@@ -1,6 +1,5 @@
 class_name Platform extends StaticBody2D
 
-# @export var speed : float = 700.0
 
 var current_mouse_position : int = 0
 var next_mouse_position : int = 0

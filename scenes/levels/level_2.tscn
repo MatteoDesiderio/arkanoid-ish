@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://b4twdeg66atsm"]
+[gd_scene load_steps=10 format=4 uid="uid://b4twdeg66atsm"]
 
 [ext_resource type="Script" uid="uid://d1g2ssktqbtxl" path="res://scripts/level.gd" id="1_ne2mo"]
+[ext_resource type="Resource" uid="uid://cax5iyel8xxpy" path="res://others/powerup_list_TEST.tres" id="2_3p04p"]
 [ext_resource type="PackedScene" uid="uid://o25w85ghrjdg" path="res://scenes/ball.tscn" id="2_6cvei"]
 [ext_resource type="PackedScene" uid="uid://cch12wwewkxxt" path="res://scenes/walls.tscn" id="3_que50"]
 [ext_resource type="PackedScene" uid="uid://xmweid82pdgg" path="res://scenes/platform.tscn" id="4_hey2k"]
@@ -12,6 +13,7 @@
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ne2mo")
 next_level = "res://scenes/levels/level_3.tscn"
+powerup_list = ExtResource("2_3p04p")
 
 [node name="Ball" parent="." instance=ExtResource("2_6cvei")]
 unique_name_in_owner = true
