@@ -271,3 +271,4 @@ func activate_powerup(powerup_info : PowerupInfoGame) -> void:
 	
 	if description == "points":
 		current_score += 1
+		ui.get_node("Game UI").update_score_label(current_score)

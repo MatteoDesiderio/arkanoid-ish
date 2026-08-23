@@ -14,7 +14,7 @@
 
 [sub_resource type="Resource" id="Resource_r1v2j"]
 script = ExtResource("3_p11jc")
-description = "life"
+description = "points"
 metadata/_custom_type_script = "uid://vybvmnmtcg08"
 
 [sub_resource type="Resource" id="Resource_mxnjm"]
