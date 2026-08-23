@@ -91,3 +91,7 @@ func _prevent_horizontal_bounce() -> void:
 	
 	if abs(direction.y) < 0.05:
 		direction.y = 0.1 * ([-1, 1].pick_random())
+
+
+func activate_powerup(powerup_info : PowerupInfoBall) -> void:
+	print()

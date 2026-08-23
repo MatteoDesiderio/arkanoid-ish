@@ -25,12 +25,15 @@ func get_collision_shape() -> CollisionShape2D:
 	return $CollisionShape2D
 
 
-func administer_powerup(powerup_info : PowerupInfoPlatform) -> void:
+func activate_powerup(powerup_info : PowerupInfoPlatform) -> void:
 	if powerup_active:
 		return
-		
+	
+	powerup_active = true
+
 	var description : String = powerup_info.description
 	var duration_seconds : int = powerup_info.duration_seconds
 	
-	Timer
+	
+	
 	

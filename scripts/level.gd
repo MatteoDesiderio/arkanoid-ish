@@ -22,6 +22,12 @@ var game_data : = ResourceLoader.load(
 #endregion
 
 
+#region CONSTANTS
+## Max Health. 
+var MAX_LIFE_POINTS : int = 3
+#endregion
+
+
 #region Game status
 ## Chance of spawning a Powerup
 @export_range(0, 100) var powerup_chance_perc : float = 10.0
@@ -32,7 +38,7 @@ var powerup : PackedScene = preload("res://scenes/powerup.tscn")
 ## The Random Number Generator used in the level
 var rng : = RandomNumberGenerator.new()
 ## Health. Game over when reaches 0
-var life_points : int = 3
+var life_points : int = MAX_LIFE_POINTS
 ## Player Score
 var current_score : int = 0
 ## Tracks the damage of each brick
@@ -247,12 +253,20 @@ func _update_game_data() -> void:
 
 
 func _on_powerup_obtained(powerup_info : PowerupInfo) -> void:
-	if powerup_info is PowerupInfoPlatform:
-		platform.administer_powerup(powerup_info)
 	if powerup_info is PowerupInfoGame:
-		administer_powerup(powerup_info)
+		activate_powerup(powerup_info)
+	if powerup_info is PowerupInfoPlatform:
+		platform.activate_powerup(powerup_info)
+	if powerup_info is PowerupInfoBall:
+		ball.activate_powerup(powerup_info)
 
-
-func administer_powerup(powerup_info : PowerupInfoGame) -> void:
+func activate_powerup(powerup_info : PowerupInfoGame) -> void:
 	var description : String = powerup_info.description
-	if description == 
+	
+	if description == "life":
+		if life_points >= MAX_LIFE_POINTS:
+			return
+		life_points += 1
+	
+	if description == "points":
+		current_score += 1

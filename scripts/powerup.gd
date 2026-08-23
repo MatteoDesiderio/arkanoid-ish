@@ -10,7 +10,7 @@ signal powerup_obtained
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
-
+	#decorate_powerup()
 
 func _process(delta: float) -> void:
 	position.y += delta * fall_speed
