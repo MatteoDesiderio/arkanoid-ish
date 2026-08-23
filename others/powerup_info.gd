@@ -3,11 +3,12 @@ class_name PowerupInfo extends Resource
 
 @export var duration_seconds : int
 @export_enum(
-	"length", 
 	"life", 
-	"bomb", 
+	"points",
+	"length", 
+	"bomb",
 	"triple", 
-	"sticky",
+	"sticky", 
 	) var description : String
 
 

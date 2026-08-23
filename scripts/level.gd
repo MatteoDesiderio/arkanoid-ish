@@ -247,5 +247,5 @@ func _update_game_data() -> void:
 
 
 func _on_powerup_obtained(powerup_info : PowerupInfo) -> void:
-	print('POWERUP OBTAINED')
-	print(powerup_info.description)
+	platform.administer_powerup(powerup_info)
+	

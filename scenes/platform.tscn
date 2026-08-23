@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://0dmimh7dd8w1" path="res://textures/placeholders/block_unbreakable.png" id="1_ba0x2"]
 [ext_resource type="Script" uid="uid://dun7r0becpeal" path="res://scripts/platform.gd" id="1_nlgqw"]
-[ext_resource type="Script" uid="uid://dq33k61tyjj0w" path="res://scenes/powerup_catcher.gd" id="3_507ja"]
+[ext_resource type="Script" uid="uid://dq33k61tyjj0w" path="res://scripts/powerup_catcher.gd" id="3_507ja"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nlgqw"]
 radius = 7.0

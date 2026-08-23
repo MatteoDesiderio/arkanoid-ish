@@ -22,3 +22,10 @@ func _physics_process(_delta: float) -> void:
 
 func get_collision_shape() -> CollisionShape2D:
 	return $CollisionShape2D
+
+
+func administer_powerup(powerup_info : PowerupInfo) -> void:
+	var description : String = powerup_info.description
+	var duration_seconds : int = powerup_info.duration_seconds
+	
+	if description = 
