@@ -3,7 +3,6 @@ class_name PowerupInfoPlatform extends PowerupInfo
 
 @export_enum(
 	"length", 
-	"sticky", 
 	"laser",
 	) var description : String
 

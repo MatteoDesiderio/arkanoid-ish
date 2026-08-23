@@ -70,6 +70,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if ball.is_active == false:
 		ball.position.x = platform.position.x
+		ball.position.y = platform.position.y - 32
 
 
 func _input(event: InputEvent) -> void:

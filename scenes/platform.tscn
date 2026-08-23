@@ -40,10 +40,6 @@ debug_color = Color(0.6342565, 0.47447675, 0.62413937, 0.41960785)
 unique_name_in_owner = true
 one_shot = true
 
-[node name="TimerSticky" type="Timer" parent="."]
-unique_name_in_owner = true
-one_shot = true
-
 [node name="TimerLaser" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true

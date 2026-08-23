@@ -19,7 +19,6 @@ var active_powerup : String = ""
 }
 
 @onready var timer_length: Timer = %TimerLength
-@onready var timer_sticky: Timer = %TimerSticky
 @onready var timer_laser: Timer = %TimerLaser
 
 
@@ -49,9 +48,6 @@ func activate_powerup(powerup_info : PowerupInfoPlatform) -> void:
 	if description == "length":
 		activate_length_powerup(powerup_info.duration_seconds)
 
-	elif description == "sticky":
-		print("Sticky powerup active")
-		
 	elif description == "laser":
 		pass
 
@@ -79,27 +75,21 @@ func _scale_length_by(factor : float) -> void:
 
 func _set_active_powerup(powerup_description : String) -> void:
 	## Set active powerup and override the current powerup for the platform.
-	## You can have a powerup for the platform and one for the ball 
+	## You can have a powerup for the platform and one for the ball.
 	if powerup_description == "length":
 		timer_laser.timeout.emit()
-		timer_sticky.timeout.emit()
 	elif powerup_description == "laser":
 		timer_length.timeout.emit()
-		timer_sticky.timeout.emit()
-	elif powerup_description == "sticky":
-		timer_length.timeout.emit()
-		timer_sticky.timeout.emit()
 	else:
 		return
 	active_powerup = powerup_description
 
 
 func _connect_timers() -> void:
-	timer_length.timeout.connect(
-	func () -> void:
+	timer_length.timeout.connect(func () -> void:
 		_reset_length()
 		active_powerup = ""
-)
+		)
 
 
 func _reset_length() -> void:

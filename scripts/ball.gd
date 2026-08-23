@@ -6,14 +6,18 @@ var is_active : bool = true
 
 var initial_direction_range : float = 1
 var direction : Vector2 = Vector2.UP
+var active_powerup : String = ""
+
 
 signal brick_hit(collision_point : Vector2)
 signal platform_hit
 signal walls_hit
 signal ground_hit
 
+@onready var timer_sticky: Timer = %TimerSticky
 
 func _ready() -> void:
+	_connect_timers()
 	stop()
 
 
@@ -94,4 +98,26 @@ func _prevent_horizontal_bounce() -> void:
 
 
 func activate_powerup(powerup_info : PowerupInfoBall) -> void:
-	print("BALL POWERUP")
+	var description : String = powerup_info.description
+	
+	if description == "sticky":
+		timer_sticky.wait_time = powerup_info.duration_seconds
+		timer_sticky.start()
+		
+		if active_powerup == "sticky":
+			return
+		
+		active_powerup = "sticky"
+		platform_hit.connect(stop)
+
+
+	elif description == "triple":
+		pass
+
+
+func _connect_timers() -> void:
+	timer_sticky.timeout.connect(
+	func () -> void:
+		platform_hit.disconnect(stop)
+		active_powerup = ""
+)
