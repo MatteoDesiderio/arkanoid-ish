@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="PowerupList" load_steps=8 format=3 uid="uid://cax5iyel8xxpy"]
+
+[ext_resource type="Script" uid="uid://cngs75q8ajovf" path="res://others/powerup_info.gd" id="1_4ptt8"]
+[ext_resource type="Script" uid="uid://but6stieifu6y" path="res://others/powerup_list.gd" id="2_drvm6"]
+
+[sub_resource type="Resource" id="Resource_34hum"]
+script = ExtResource("1_4ptt8")
+description = "triple"
+metadata/_custom_type_script = "uid://cngs75q8ajovf"
+
+[sub_resource type="Resource" id="Resource_vhkxn"]
+script = ExtResource("1_4ptt8")
+description = "life"
+metadata/_custom_type_script = "uid://cngs75q8ajovf"
+
+[sub_resource type="Resource" id="Resource_1q7iv"]
+script = ExtResource("1_4ptt8")
+description = "bomb"
+metadata/_custom_type_script = "uid://cngs75q8ajovf"
+
+[sub_resource type="Resource" id="Resource_gj3kh"]
+script = ExtResource("1_4ptt8")
+description = "triple"
+metadata/_custom_type_script = "uid://cngs75q8ajovf"
+
+[sub_resource type="Resource" id="Resource_myogd"]
+script = ExtResource("1_4ptt8")
+description = "sticky"
+metadata/_custom_type_script = "uid://cngs75q8ajovf"
+
+[resource]
+script = ExtResource("2_drvm6")
+powerups = Array[ExtResource("1_4ptt8")]([SubResource("Resource_34hum"), SubResource("Resource_vhkxn"), SubResource("Resource_1q7iv"), SubResource("Resource_gj3kh"), SubResource("Resource_myogd")])
+metadata/_custom_type_script = "uid://but6stieifu6y"

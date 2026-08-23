@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=4 uid="uid://chh2b2goauyyr"]
+
+[ext_resource type="Script" uid="uid://d1g2ssktqbtxl" path="res://scripts/level.gd" id="1_m46pi"]
+[ext_resource type="Resource" uid="uid://cax5iyel8xxpy" path="res://others/powerup_list_TEST.tres" id="2_8db6m"]
+[ext_resource type="PackedScene" uid="uid://o25w85ghrjdg" path="res://scenes/ball.tscn" id="3_r1v2j"]
+[ext_resource type="PackedScene" uid="uid://cch12wwewkxxt" path="res://scenes/walls.tscn" id="4_d232s"]
+[ext_resource type="PackedScene" uid="uid://xmweid82pdgg" path="res://scenes/platform.tscn" id="5_p11jc"]
+[ext_resource type="PackedScene" uid="uid://ck5dc8d36s6rp" path="res://scenes/bricks.tscn" id="6_na6n3"]
+[ext_resource type="PackedScene" uid="uid://cjfhr5k8fv8s6" path="res://scenes/game_ui.tscn" id="7_23cwe"]
+[ext_resource type="PackedScene" uid="uid://cbvgb78uak2o5" path="res://scenes/game_over_popup.tscn" id="8_f3dcj"]
+[ext_resource type="PackedScene" uid="uid://dj8tq3os1ilcy" path="res://scenes/level_cleared_popup.tscn" id="9_rpn8x"]
+[ext_resource type="PackedScene" uid="uid://dr8ka7l6718oq" path="res://scenes/powerup.tscn" id="10_8db6m"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_m46pi")
+next_level = "res://scenes/levels/level_0.tscn"
+powerup_chance_perc = 100.0
+powerup_list = ExtResource("2_8db6m")
+
+[node name="Ball" parent="." instance=ExtResource("3_r1v2j")]
+unique_name_in_owner = true
+position = Vector2(320, 918)
+
+[node name="Walls" parent="." instance=ExtResource("4_d232s")]
+unique_name_in_owner = true
+
+[node name="Platform" parent="." instance=ExtResource("5_p11jc")]
+unique_name_in_owner = true
+position = Vector2(320, 960)
+
+[node name="Bricks" parent="." instance=ExtResource("6_na6n3")]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAABABEAAQAAAAAAAAACABEAAQAAAAAAAAADABEAAQAAAAAAAAAEABEAAQAAAAAAAAAFABEAAQAAAAAAAAAGABEAAQAAAAAAAAAHABEAAQAAAAAAAAAIABEAAQAAAAAAAAABAAIAAwAAAAAAAAACAAIAAwAAAAAAAAADAAIAAwAAAAAAAAACAAMAAwAAAAAAAAACAAUAAwAAAAAAAAACAAQAAwAAAAAAAAAFAAIAAwAAAAAAAAAFAAMAAwAAAAAAAAAFAAQAAwAAAAAAAAAFAAUAAwAAAAAAAAAGAAUAAwAAAAAAAAAGAAIAAwAAAAAAAAAFAAYAAwAAAAAAAAAFAAcAAwAAAAAAAAAGAAcAAwAAAAAAAAABAAgAAwAAAAAAAAACAAgAAwAAAAAAAAADAAgAAwAAAAAAAAABAAkAAwAAAAAAAAABAAoAAwAAAAAAAAACAAoAAwAAAAAAAAADAAsAAwAAAAAAAAADAAwAAwAAAAAAAAACAAwAAwAAAAAAAAABAAwAAwAAAAAAAAAFAAkAAwAAAAAAAAAGAAkAAwAAAAAAAAAHAAkAAwAAAAAAAAAGAAoAAwAAAAAAAAAGAAsAAwAAAAAAAAAGAAwAAwAAAAAAAAACAAYAAwAAAAAAAAAGAA0AAwAAAAAAAAA=")
+
+[node name="UI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Game UI" parent="UI" instance=ExtResource("7_23cwe")]
+metadata/_edit_lock_ = true
+
+[node name="Game Over Popup" parent="UI" instance=ExtResource("8_f3dcj")]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Level Cleared Popup" parent="UI" instance=ExtResource("9_rpn8x")]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Powerup" parent="." instance=ExtResource("10_8db6m")]
+position = Vector2(227, 677)
+
+[node name="Powerup2" parent="." instance=ExtResource("10_8db6m")]
+position = Vector2(317, 687)
+
+[node name="Powerup3" parent="." instance=ExtResource("10_8db6m")]
+position = Vector2(418, 679)
+
+[node name="Powerup4" parent="." instance=ExtResource("10_8db6m")]
+position = Vector2(315, 777)
