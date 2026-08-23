@@ -1,20 +1,48 @@
-[gd_scene load_steps=10 format=4 uid="uid://chh2b2goauyyr"]
+[gd_scene load_steps=18 format=4 uid="uid://chh2b2goauyyr"]
 
 [ext_resource type="Script" uid="uid://d1g2ssktqbtxl" path="res://scripts/level.gd" id="1_m46pi"]
-[ext_resource type="Resource" uid="uid://cax5iyel8xxpy" path="res://others/powerup_list_TEST.tres" id="2_8db6m"]
+[ext_resource type="Script" uid="uid://cngs75q8ajovf" path="res://others/powerup_info.gd" id="2_d232s"]
+[ext_resource type="Script" uid="uid://vybvmnmtcg08" path="res://others/powerup_info_game.gd" id="3_p11jc"]
 [ext_resource type="PackedScene" uid="uid://o25w85ghrjdg" path="res://scenes/ball.tscn" id="3_r1v2j"]
 [ext_resource type="PackedScene" uid="uid://cch12wwewkxxt" path="res://scenes/walls.tscn" id="4_d232s"]
+[ext_resource type="Script" uid="uid://bu3gcmqhqmhva" path="res://others/powerup_info_platform.gd" id="4_na6n3"]
+[ext_resource type="Script" uid="uid://but6stieifu6y" path="res://others/powerup_list.gd" id="5_23cwe"]
 [ext_resource type="PackedScene" uid="uid://xmweid82pdgg" path="res://scenes/platform.tscn" id="5_p11jc"]
 [ext_resource type="PackedScene" uid="uid://ck5dc8d36s6rp" path="res://scenes/bricks.tscn" id="6_na6n3"]
 [ext_resource type="PackedScene" uid="uid://cjfhr5k8fv8s6" path="res://scenes/game_ui.tscn" id="7_23cwe"]
 [ext_resource type="PackedScene" uid="uid://cbvgb78uak2o5" path="res://scenes/game_over_popup.tscn" id="8_f3dcj"]
 [ext_resource type="PackedScene" uid="uid://dj8tq3os1ilcy" path="res://scenes/level_cleared_popup.tscn" id="9_rpn8x"]
 
+[sub_resource type="Resource" id="Resource_f3dcj"]
+script = ExtResource("3_p11jc")
+description = "life"
+metadata/_custom_type_script = "uid://vybvmnmtcg08"
+
+[sub_resource type="Resource" id="Resource_rpn8x"]
+script = ExtResource("3_p11jc")
+description = "points"
+metadata/_custom_type_script = "uid://vybvmnmtcg08"
+
+[sub_resource type="Resource" id="Resource_bo4cq"]
+script = ExtResource("4_na6n3")
+description = "length"
+metadata/_custom_type_script = "uid://bu3gcmqhqmhva"
+
+[sub_resource type="Resource" id="Resource_44d04"]
+script = ExtResource("4_na6n3")
+description = "sticky"
+metadata/_custom_type_script = "uid://bu3gcmqhqmhva"
+
+[sub_resource type="Resource" id="Resource_mxnjm"]
+script = ExtResource("5_23cwe")
+powerups = Array[ExtResource("2_d232s")]([SubResource("Resource_f3dcj"), SubResource("Resource_rpn8x"), SubResource("Resource_bo4cq"), SubResource("Resource_44d04")])
+metadata/_custom_type_script = "uid://but6stieifu6y"
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_m46pi")
 next_level = "res://scenes/levels/level_0.tscn"
 powerup_chance_perc = 100.0
-powerup_list = ExtResource("2_8db6m")
+powerup_list = SubResource("Resource_mxnjm")
 
 [node name="Ball" parent="." instance=ExtResource("3_r1v2j")]
 unique_name_in_owner = true

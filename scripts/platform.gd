@@ -4,6 +4,7 @@ class_name Platform extends StaticBody2D
 var current_mouse_position : int = 0
 var next_mouse_position : int = 0
 var mouse_velocity : float = 0.0
+var powerup_active = false
 
 
 func _ready() -> void:
@@ -24,8 +25,12 @@ func get_collision_shape() -> CollisionShape2D:
 	return $CollisionShape2D
 
 
-func administer_powerup(powerup_info : PowerupInfo) -> void:
+func administer_powerup(powerup_info : PowerupInfoPlatform) -> void:
+	if powerup_active:
+		return
+		
 	var description : String = powerup_info.description
 	var duration_seconds : int = powerup_info.duration_seconds
 	
-	if description = 
+	Timer
+	

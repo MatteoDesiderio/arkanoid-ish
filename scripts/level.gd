@@ -247,5 +247,12 @@ func _update_game_data() -> void:
 
 
 func _on_powerup_obtained(powerup_info : PowerupInfo) -> void:
-	platform.administer_powerup(powerup_info)
-	
+	if powerup_info is PowerupInfoPlatform:
+		platform.administer_powerup(powerup_info)
+	if powerup_info is PowerupInfoGame:
+		administer_powerup(powerup_info)
+
+
+func administer_powerup(powerup_info : PowerupInfoGame) -> void:
+	var description : String = powerup_info.description
+	if description == 
