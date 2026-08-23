@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://xmweid82pdgg"]
+[gd_scene load_steps=5 format=3 uid="uid://xmweid82pdgg"]
 
 [ext_resource type="Texture2D" uid="uid://0dmimh7dd8w1" path="res://textures/placeholders/block_unbreakable.png" id="1_ba0x2"]
 [ext_resource type="Script" uid="uid://dun7r0becpeal" path="res://scripts/platform.gd" id="1_nlgqw"]
@@ -6,6 +6,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nlgqw"]
 radius = 7.0
 height = 64.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlgqw"]
+size = Vector2(66, 16)
 
 [node name="Platform" type="StaticBody2D"]
 collision_layer = 4
@@ -19,3 +22,11 @@ texture = ExtResource("1_ba0x2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_nlgqw")
+
+[node name="Powerup Catcher" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Powerup Catcher"]
+shape = SubResource("RectangleShape2D_nlgqw")
+debug_color = Color(0.6342565, 0.47447675, 0.62413937, 0.41960785)
