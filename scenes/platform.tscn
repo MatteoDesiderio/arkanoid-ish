@@ -16,11 +16,13 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_nlgqw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlatformSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 scale = Vector2(1, 0.4375)
 texture = ExtResource("1_ba0x2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PlatformShape" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_nlgqw")
 
@@ -29,6 +31,19 @@ collision_layer = 32
 collision_mask = 0
 script = ExtResource("3_507ja")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Powerup Catcher"]
+[node name="CatcherShape" type="CollisionShape2D" parent="Powerup Catcher"]
+unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_nlgqw")
 debug_color = Color(0.6342565, 0.47447675, 0.62413937, 0.41960785)
+
+[node name="TimerLength" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="TimerSticky" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="TimerLaser" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true

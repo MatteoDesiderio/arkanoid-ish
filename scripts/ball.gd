@@ -76,7 +76,7 @@ func _get_bounce_direction_platform(platform : Platform, collision_position : Ve
 	## Return a vector direction with angle 0 to +/- 45 degrees (with respect to
 	## the vertical on the bounce point) based on the horizontal distance 
 	## between said bounce point and the center of the platform   
-	var sprite : Sprite2D = platform.get_node('Sprite2D')
+	var sprite : Sprite2D = platform.get_node('PlatformSprite')
 	var half_width : float = sprite.get_rect().size.x / 2.0
 	
 	var distance : Vector2 = collision_position - platform.position 
@@ -94,4 +94,4 @@ func _prevent_horizontal_bounce() -> void:
 
 
 func activate_powerup(powerup_info : PowerupInfoBall) -> void:
-	print()
+	print("BALL POWERUP")
