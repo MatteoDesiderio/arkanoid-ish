@@ -15,7 +15,7 @@ var game_data : = ResourceLoader.load(
 @onready var bricks: TileMapLayer = %Bricks
 #endregion
 
-
+ 
 #region UI
 ## UI: health, score & menu button; game over popup; game won popup
 @onready var ui: CanvasLayer = %"UI"
@@ -49,8 +49,6 @@ var brick_count : int = 0 :
 		brick_count = new_brick_count
 		if brick_count <= 0:
 			emit_signal("level_cleared")
-## The extra balls, active if powerup is active
-var extra_balls = Array[CharacterBody2D]
 #endregion
 
 
@@ -61,20 +59,12 @@ signal level_cleared
 
 
 func _ready() -> void:
-	_initialize_extra_balls()
 	ball.brick_hit.connect(_on_brick_hit)
 	ball.platform_hit.connect(_on_platform_hit)
 	ball.walls_hit.connect(_on_walls_hit)
 	ball.ground_hit.connect(_on_ground_hit)
 	level_cleared.connect(_on_level_cleared)
 	_initialize_game_status()
-
-
-func _initialize_extra_balls() -> void:
-	extra_balls = [
-		preload("res://scenes/ball.tscn").instantiate(), 
-		]
-	
 
 
 func _process(_delta: float) -> void:
@@ -278,12 +268,10 @@ func activate_powerup(powerup_info : PowerupInfoGame) -> void:
 		if life_points < MAX_LIFE_POINTS:
 			life_points += 1
 			ui.get_node("Game UI").increase_life_points_by_one()
-			
-	
+
 	if description == "points":
 		current_score += 1
 		ui.get_node("Game UI").update_score_label(current_score)
-	
-	
+
 	if description == "triple":
 		pass
