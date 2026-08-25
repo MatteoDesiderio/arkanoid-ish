@@ -112,9 +112,11 @@ func activate_powerup(powerup_info : PowerupInfoBall) -> void:
 		active_powerup = "sticky"
 		platform_hit.connect(stop)
 
-
-	elif description == "triple":
+	elif description == "bomb":
 		pass
+		
+	#elif description == "triple":
+		#pass
 
 
 func _connect_timers() -> void:

@@ -3,7 +3,6 @@ class_name PowerupInfoBall extends PowerupInfo
 
 @export_enum(
 	"bomb",
-	"triple", 
 	"sticky",
 	) var description : String
 

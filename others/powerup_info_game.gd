@@ -4,6 +4,7 @@ class_name PowerupInfoGame  extends PowerupInfo
 @export_enum(
 	"life", 
 	"points",
+	"triple",
 	) var description : String
 
 
