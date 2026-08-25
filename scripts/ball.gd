@@ -4,8 +4,8 @@ extends CharacterBody2D
 
 var is_active : bool = true
 
-var initial_direction_range : float = 1
-var direction : Vector2 = Vector2(randf_range(-1, +1) * initial_direction_range, -1).normalized() #Vector2.UP
+var initial_angle_range : float = PI / 4
+var direction : Vector2
 var active_powerup : String = ""
 
 
@@ -16,7 +16,9 @@ signal ground_hit
 
 @onready var timer_sticky: Timer = %TimerSticky
 
+
 func _ready() -> void:
+	direction = Vector2.UP.rotated(randf_range(-1, +1) * initial_angle_range)
 	_connect_timers()
 	stop()
 
