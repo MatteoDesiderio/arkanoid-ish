@@ -5,7 +5,7 @@ extends CharacterBody2D
 var is_active : bool = true
 
 var initial_direction_range : float = 1
-var direction : Vector2 = Vector2.UP
+var direction : Vector2 = Vector2(randf_range(-1, +1) * initial_direction_range, -1).normalized() #Vector2.UP
 var active_powerup : String = ""
 
 
@@ -27,7 +27,7 @@ func stop() -> void:
 
 func start() -> void:
 	is_active = true
-	direction = Vector2(randf_range(-1, +1) * initial_direction_range, -1).normalized()
+	#direction = Vector2(randf_range(-1, +1) * initial_direction_range, -1).normalized()
 
 
 func _physics_process(delta: float) -> void:
