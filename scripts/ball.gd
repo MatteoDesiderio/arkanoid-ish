@@ -42,7 +42,6 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var collider_from_collision = collision.get_collider()
-
 	direction = direction.bounce(collision.get_normal())
 
 	if collider_from_collision is Bricks:
@@ -50,19 +49,20 @@ func _physics_process(delta: float) -> void:
 			'brick_hit', 
 			collision.get_position()
 			)
-		#return
-
+		set_collision_mask_value(3, true)
+		
 	if collider_from_collision is Wall:
 		emit_signal(
 			'walls_hit'
 			)
-
+		set_collision_mask_value(3, true)
+		
 		if collider_from_collision is Ground:
 			emit_signal(
 				'ground_hit'
 				)
+			set_collision_mask_value(3, false)
 
-		#return
 
 	if collider_from_collision is Platform:
 		#if direction.y > 0:
@@ -74,8 +74,8 @@ func _physics_process(delta: float) -> void:
 		emit_signal(
 			'platform_hit'
 			)
-		#return
-		
+		set_collision_mask_value(3, false)
+
 	_prevent_horizontal_bounce()
 
 

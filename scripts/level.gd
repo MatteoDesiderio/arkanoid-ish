@@ -60,9 +60,9 @@ signal level_cleared
 
 func _connect_ball_signals(ball_instance : CharacterBody2D) -> void:
 	ball_instance.brick_hit.connect(_on_brick_hit)
-	ball_instance.platform_hit.connect(_on_platform_hit)
-	ball_instance.walls_hit.connect(_on_walls_hit)
-	ball_instance.ground_hit.connect(_on_ground_hit)
+	#ball_instance.platform_hit.connect(_on_platform_hit)
+	#ball_instance.walls_hit.connect(_on_walls_hit)
+	#ball_instance.ground_hit.connect(_on_ground_hit)
 
 
 func _ready() -> void:
@@ -85,26 +85,27 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_brick_hit(hit_point : Vector2):
-	platform.get_collision_shape().disabled = false
+	# TODO delete once ball layer solved 
+	#platform.get_collision_shape().disabled = false
 
 	var hit_cell_position : = get_closest_cell_to_point(hit_point)
 	# in this order, otherwise the brick is already destroyed
 	update_score(hit_cell_position)
 	damage_and_break_brick(hit_cell_position)
 
+# TODO delete once ball layer solved 
+#func _on_platform_hit() -> void:
+	#platform.get_collision_shape().disabled = true
 
-func _on_platform_hit() -> void:
-	platform.get_collision_shape().disabled = true
-
-
-func _on_walls_hit() -> void:
-	platform.get_collision_shape().disabled = false
-
+# TODO delete once ball layer solved 
+#func _on_walls_hit() -> void:
+	#platform.get_collision_shape().disabled = false
 
 func _on_ground_hit() -> void:
 	damage_life_points()
 	# don't bounce between ground & platform, and lose 3 life points very fast
-	platform.get_collision_shape().disabled = true
+	# TODO delete once ball layer solved 
+	#platform.get_collision_shape().disabled = true
 
 
 func _initialize_game_status() -> void:
