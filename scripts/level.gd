@@ -58,11 +58,15 @@ signal level_cleared
 #endregion
 
 
+func _connect_ball_signals(ball_instance : CharacterBody2D) -> void:
+	ball_instance.brick_hit.connect(_on_brick_hit)
+	ball_instance.platform_hit.connect(_on_platform_hit)
+	ball_instance.walls_hit.connect(_on_walls_hit)
+	ball_instance.ground_hit.connect(_on_ground_hit)
+
+
 func _ready() -> void:
-	ball.brick_hit.connect(_on_brick_hit)
-	ball.platform_hit.connect(_on_platform_hit)
-	ball.walls_hit.connect(_on_walls_hit)
-	ball.ground_hit.connect(_on_ground_hit)
+	_connect_ball_signals(ball)
 	level_cleared.connect(_on_level_cleared)
 	_initialize_game_status()
 
@@ -274,4 +278,10 @@ func activate_powerup(powerup_info : PowerupInfoGame) -> void:
 		ui.get_node("Game UI").update_score_label(current_score)
 
 	if description == "triple":
-		pass
+		# if is not active already
+		for idx in 2:
+			var extra_ball := ball.duplicate()
+			_connect_ball_signals(extra_ball)
+			call_deferred("add_child", extra_ball)
+			extra_ball.set_deferred("is_active", true)
+		
