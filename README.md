@@ -20,7 +20,11 @@ The bricks scene is originally empty, but is changed/designed in the editor manu
 NOTE: For now the source_id of the breakable brick is '2'. Subject to change if tiles change 
 
 ## To do:
-- Refactor powerup resource
+- in the ```level.gd``` script: remove 1 from ```var balls_number``` when the ball hits the ground
+- in the ```level.gd``` script: remove a life and reset the ball only when ```balls_number = 1```
+- in the ```ball.gd``` script: ```queue_free``` when the ball hits the ground
+
+
 - implement win game conditions (all levels cleared)
 - powerup mechanism (figure out: random drop?)
 - add random direction when ball stuck for too long in some bounce configuration (it happens) 
