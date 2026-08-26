@@ -6,6 +6,12 @@ var game_data : = ResourceLoader.load(
 	"GameData")
  
 
+#region DEBUGGING
+## Cannot lose if true
+@export var debug_immortal = false
+#endregion
+
+
 #region Objects
 ## Bouncy ball
 @onready var ball: CharacterBody2D = %Ball
@@ -49,6 +55,8 @@ var brick_count : int = 0 :
 		brick_count = new_brick_count
 		if brick_count <= 0:
 			emit_signal("level_cleared")
+## The number of balls in the game
+var balls_number : int = 1
 #endregion
 
 
@@ -62,7 +70,8 @@ func _connect_ball_signals(ball_instance : CharacterBody2D) -> void:
 	ball_instance.brick_hit.connect(_on_brick_hit)
 	#ball_instance.platform_hit.connect(_on_platform_hit)
 	#ball_instance.walls_hit.connect(_on_walls_hit)
-	#ball_instance.ground_hit.connect(_on_ground_hit)
+	if not debug_immortal:
+		ball_instance.ground_hit.connect(_on_ground_hit)
 
 
 func _ready() -> void:
@@ -279,10 +288,13 @@ func activate_powerup(powerup_info : PowerupInfoGame) -> void:
 		ui.get_node("Game UI").update_score_label(current_score)
 
 	if description == "triple":
-		# if is not active already
 		for idx in 2:
+			# I don't want more than 3 balls around
+			if balls_number >= 3:
+				break
 			var extra_ball := ball.duplicate()
 			_connect_ball_signals(extra_ball)
 			call_deferred("add_child", extra_ball)
 			extra_ball.set_deferred("is_active", true)
+			balls_number += 1
 		

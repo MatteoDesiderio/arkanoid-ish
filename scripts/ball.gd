@@ -21,7 +21,6 @@ func _ready() -> void:
 	direction = Vector2.UP.rotated(randf_range(-1, +1) * initial_angle_range)
 	_connect_timers()
 	stop()
-	print("ball ", name, ": active = ", is_active)
 
 
 func stop() -> void:
