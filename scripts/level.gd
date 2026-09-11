@@ -14,7 +14,7 @@ var game_data : = ResourceLoader.load(
 
 #region Objects
 ## Bouncy ball
-@onready var ball: CharacterBody2D = %Ball
+@onready var start_ball: CharacterBody2D = %Ball
 ## Player controlled, moving platform
 @onready var platform: Platform = %Platform
 ## Bricks of the level
@@ -57,6 +57,8 @@ var brick_count : int = 0 :
 			emit_signal("level_cleared")
 ## The number of balls in the game
 var balls_number : int = 1
+## Balls array. Keep track of the balls bouncing in the level
+var balls : Array[CharacterBody2D]
 #endregion
 
 
@@ -75,51 +77,61 @@ func _connect_ball_signals(ball_instance : CharacterBody2D) -> void:
 
 
 func _ready() -> void:
-	_connect_ball_signals(ball)
+	balls.append(start_ball)
+	_connect_ball_signals(balls[0])
 	level_cleared.connect(_on_level_cleared)
 	_initialize_game_status()
 
 
 func _process(_delta: float) -> void:
-	if ball.is_active == false:
-		ball.position.x = platform.position.x
-		ball.position.y = platform.position.y - 32
+	for ball : CharacterBody2D in balls:
+		if not ball:
+			return 
+		
+		if ball.is_active == false:
+			ball.position.x = platform.position.x
+			ball.position.y = platform.position.y - 32
 
 
 func _input(event: InputEvent) -> void:
 		var is_mouse : bool = event is InputEventMouseButton
 		
-		if (is_mouse == true) and (ball.is_active == false):
-			ball.start()
+		for ball : CharacterBody2D in balls:
+			if (is_mouse == true) and (ball.is_active == false):
+				ball.start()
 
 
 func _on_brick_hit(hit_point : Vector2):
-	# TODO delete once ball layer solved 
-	#platform.get_collision_shape().disabled = false
-
 	var hit_cell_position : = get_closest_cell_to_point(hit_point)
 	# in this order, otherwise the brick is already destroyed
 	update_score(hit_cell_position)
 	damage_and_break_brick(hit_cell_position)
 
-# TODO delete once ball layer solved 
-#func _on_platform_hit() -> void:
-	#platform.get_collision_shape().disabled = true
 
-# TODO delete once ball layer solved 
-#func _on_walls_hit() -> void:
-	#platform.get_collision_shape().disabled = false
-
-func _on_ground_hit() -> void:
-	damage_life_points()
-	# don't bounce between ground & platform, and lose 3 life points very fast
-	# TODO delete once ball layer solved 
-	#platform.get_collision_shape().disabled = true
+func _on_ground_hit(ball_name : String) -> void:
+	# ball_name is carried over from the signal sent by the 
+	balls_number -= 1
+	
+	# find out which ball hit the ground and pop it from the array 
+	# we need to do this because ball is freed when touches ground, and we need 
+	# to erase reference to it (i.e., decreasing balls_number var is not enough)
+	balls.pop_at(
+		balls.find_custom(func (ball) -> bool:
+			return ball.name == ball_name
+			)
+		)
+	
+	# do not dcrease life points on ground hit if many balls are bouncing around
+	# it is not fair to ask the player to keep track of all of those
+	# it's a powerup not a punishment
+	if balls_number == 0:
+		damage_life_points()
+		_reset_ball()
 
 
 func _initialize_game_status() -> void:
 	for brick : Vector2i in bricks.get_used_cells():
-		# TODO check whether alt tile ID corresponds to an already damaged brick
+		# assume we do not have already damaged brick
 		# initialize the damage for each brick
 		damage_tracker[brick] = 0
 		# initialize number of bricks to break in order to win the level
@@ -273,7 +285,9 @@ func _on_powerup_obtained(powerup_info : PowerupInfo) -> void:
 	if powerup_info is PowerupInfoPlatform:
 		platform.activate_powerup(powerup_info)
 	if powerup_info is PowerupInfoBall:
-		ball.activate_powerup(powerup_info)
+		for ball : CharacterBody2D in balls:
+			ball.activate_powerup(powerup_info)
+
 
 func activate_powerup(powerup_info : PowerupInfoGame) -> void:
 	var description : String = powerup_info.description
@@ -292,9 +306,18 @@ func activate_powerup(powerup_info : PowerupInfoGame) -> void:
 			# I don't want more than 3 balls around
 			if balls_number >= 3:
 				break
-			var extra_ball := ball.duplicate()
+			var extra_ball := balls[0].duplicate()
 			_connect_ball_signals(extra_ball)
 			call_deferred("add_child", extra_ball)
 			extra_ball.set_deferred("is_active", true)
 			balls_number += 1
-		
+			balls.append(extra_ball)
+
+
+func _reset_ball() -> void:
+	balls_number = 1
+	balls = []
+	balls.append(preload("res://scenes/ball.tscn").instantiate())
+	add_child(balls[0])
+	_connect_ball_signals(balls[0])
+	balls[0].is_active = false

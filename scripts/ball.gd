@@ -7,12 +7,12 @@ var is_active : bool = true
 var initial_angle_range : float = PI / 4
 var direction : Vector2
 var active_powerup : String = ""
-
+var is_not_main_ball = false
 
 signal brick_hit(collision_point : Vector2)
 signal platform_hit
 signal walls_hit
-signal ground_hit
+signal ground_hit(ball_name:String)
 
 @onready var timer_sticky: Timer = %TimerSticky
 
@@ -58,9 +58,12 @@ func _physics_process(delta: float) -> void:
 		
 		if collider_from_collision is Ground:
 			emit_signal(
-				'ground_hit'
+				'ground_hit',
+				name
 				)
 			set_collision_mask_value(3, false)
+			
+			queue_free()
 
 
 	if collider_from_collision is Platform:
@@ -114,9 +117,6 @@ func activate_powerup(powerup_info : PowerupInfoBall) -> void:
 
 	elif description == "bomb":
 		pass
-		
-	#elif description == "triple":
-		#pass
 
 
 func _connect_timers() -> void:
